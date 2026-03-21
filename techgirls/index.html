@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tech Girls</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    
+    <canvas id="hex-canvas"></canvas>
+
+    <nav class="navbar">
+        <div class="logo">TECH GIRLS</div>
+        
+        <div class="hamburger" id="hamburger-menu">
+            <div class="bar"></div>
+            <div class="bar"></div>
+            <div class="bar"></div>
+        </div>
+        
+        <div class="nav-links">
+            <a href="#home">Home</a>
+            <a href="#projects">Projects</a>
+            <a href="#gallery">Gallery</a> 
+            <a href="#team">Our Team</a> <a href="#contact">Contact</a>
+        </div>
+    </nav>
+    
+    <div class="mobile-menu" id="mobile-menu-links">
+        <a href="#home">Home</a>
+        <a href="#projects">Projects</a>
+        <a href="#gallery">Gallery</a> 
+        <a href="#team">Our Team</a> <a href="#contact">Contact</a>
+    </div>
+
+    <section class="hero" id="home">
+        <div id="canvas-container"></div>
+        <div class="hero-content">
+            <h1>Welcome to Tech Girls Buildverse</h1>
+            <p class="subtitle">We build PCs. We build dreams.</p>
+            
+            <div id="joystick-container">
+                <button class="joystick-button" id="joystick-btn">
+                    <i class="fas fa-arrows-alt-h joystick-icon"></i> 
+                </button>
+                <div class="joystick-text-label">Drag & play</div>
+            </div>
+        </div>
+    </section>
+
+    <section class="projects-section" id="projects">
+        <h2 class="projects-title">Our Latest Builds & Reviews</h2>
+        <p class="projects-subtitle">Watch the girls bring your dream PC to life.</p>
+        
+        <div class="video-grid">
+            
+            <div class="video-card">
+                <a 
+                    class="video-thumbnail" 
+                    target="_blank" 
+                    href="https://youtu.be/MCy6uSt22po?si=B1BmE0gWhe5Uhuas" 
+                    style="background-image: url('tyrepc.png');"
+                >
+                    <i class="fab fa-youtube video-play-icon"></i>
+                </a>
+                <h3 class="video-title">Ultimate Upcycle: PC Built Inside a Car Tyre!</h3>
+                <p class="video-description">The ultimate upcycle challenge! Watch Tech Girls of RD College transform a rugged car tire into a fully functional, unique custom PC cabinet.</p>
+            </div>  
+
+            <div class="video-card">
+                <a class="video-thumbnail" target="_blank" href="https://www.youtube.com/watch?v=UWdnFH1hvn0" style="background-image: url('pyramid.png');">
+                    <i class="fab fa-youtube video-play-icon"></i>
+                </a>
+                <h3 class="video-title">Pyramid PC Build | Airflow & Installation Challenges</h3>
+                <p class="video-description">Building a complex pyramid case and conquering tough challenges like CPU installation, thermal solutions, and front panel wiring.</p>
+            </div>
+            <div class="video-card">
+                <a class="video-thumbnail" target="_blank" href="https://youtu.be/Q04xWYU7Phw" style="background-image: url('g4.jpeg');">
+                    <i class="fab fa-youtube video-play-icon"></i>
+                </a>
+                <h3 class="video-title">Custom Loop PC by Tech Girls</b></h3>
+                <p class="video-description">Building a stunning custom loop PC with unique design elements and advanced cooling solutions.</p>
+            </div>
+        </div>
+
+        <a href="https://www.youtube.com/@TechGirlsTamil" target="_blank" class="youtube-link-btn">
+            <i class="fab fa-youtube"></i> View All Projects on YouTube
+        </a>
+    </section>
+
+    <section class="gallery-section" id="gallery">
+        <h2 class="gallery-title">The Finished Builds</h2>
+        <p class="gallery-subtitle">A collection of our favorite custom PCs.</p>
+        
+        <div class="gallery-grid">
+            <div class="gallery-item gallery-img-link">
+    <img src="g1.jpeg" data-src="g1.jpeg" alt="PC built inside a car tyre" class="gallery-img">
+</div>
+<div class="gallery-item gallery-img-link">
+    <img src="g2.jpeg" data-src="g2.jpeg" alt="Pyramid PC Case" class="gallery-img">
+</div>
+<div class="gallery-item gallery-img-link">
+    <img src="g3.jpeg" data-src="g3.jpeg" alt="Custom water-cooled PC" class="gallery-img">
+</div>
+<div class="gallery-item gallery-img-link">
+    <img src="g4.jpeg" data-src="g4.jpeg" alt="RGB Gaming Setup" class="gallery-img">
+</div>
+        </div>
+    </section>
+    <section class="team-section" id="team">
+        <h2 class="section-title">Meet Our Team</h2>
+        <div class="team-content">
+            <div class="team-image-container">
+                <img src="channels4_banner.jpg" alt="Photo of the Tech Girls Team" class="team-image">
+            </div>
+            <div class="team-description">
+                <p>We are **Tech Girls**, a passionate group of builders and creators dedicated to pushing the boundaries of custom PC design. From aesthetic case mods to high-performance liquid cooling systems, our expertise turns your wildest hardware dreams into reality. We believe in meticulous craftsmanship, flawless execution, and providing a personalized experience for every build.</p>
+                <p>Our goal is to build PCs that are not just machines, but true works of art.</p>
+            </div>
+        </div>
+    </section>
+    <section class="contact-section" id="contact">
+        <form class="contact-form" id="contact-form">
+            <h2 class="form-title">Contact Us</h2>
+            <div class="form-group">
+                <label for="name">Name</label>
+                <input type="text" id="name" class="form-control" required>
+            </div>
+            <div class="form-group">
+                <label for="email">Email</label>
+                <input type="email" id="email" class="form-control" required>
+            </div>
+            <div class="form-group">
+                <label for="description">Tell Us Anything</label>
+                <textarea id="description" class="form-control" required></textarea>
+            </div>
+            <button type="submit" class="submit-btn">Send</button>
+            <div class="message success" id="success-message">
+                Thank you! We'll get back to you soon.
+            </div>
+        </form>
+    </section>
+    <div id="image-overlay" class="image-overlay">
+        <div class="overlay-content">
+            <span class="overlay-close-btn">&times;</span>
+            <img id="overlay-image" src="" alt="Full size custom PC build">
+        </div>
+    </div>
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    </body>
+</html>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/loaders/GLTFLoader.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/controls/OrbitControls.min.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
