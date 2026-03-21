@@ -1,0 +1,408 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>RD Cafeteria - RD COLLEGE</title>
+<link href="https://fonts.googleapis.com/css2?family=Indie+Flower&family=Dancing+Script:wght@700&display=swap" rel="stylesheet">
+<style>
+* { box-sizing: border-box; }
+body {
+margin: 0;
+min-height: 100vh;
+display: flex;
+justify-content: center;
+align-items: center;
+background: #0f0f0f url('https://img.freepik.com/free-photo/top-view-notepad-dark-red-table-with-copy-place_140725-140274.jpg') center/cover fixed;
+font-family: 'Indie Flower', cursive;
+color: #e0e0e0;
+padding: 20px 0 130px;
+}
+/* Image container */
+.image-box{
+position: relative;
+width: 320px;
+border-radius: 25px;
+overflow: hidden;
+transition: .4s ease;
+}
+.image-box img{
+width: 100%;
+display: block;
+filter: saturate(1.2) contrast(1.1);
+}
+.image-box::after{
+content:"";
+position:absolute;
+inset:0;
+border: 3px solid #ff3366;
+border-radius: 25px;
+z-index:2;
+}
+.image-box:hover{
+transform: scale(1.05) rotate(-1deg);
+box-shadow: 0 0 40px rgba(255,0,102,0.8), 0 0 80px rgba(255,102,204,0.6);
+}
+.scrapbook {
+width: 96%;
+max-width: 1350px;
+background: rgba(20, 20, 30, 0.92);
+padding: 35px 15px;
+border-radius: 25px;
+border: 2px solid #333;
+position: relative;
+animation: fireGlow 4s ease-in-out infinite alternate;
+}
+@keyframes fireGlow {
+  0% { box-shadow: 0 0 60px rgba(224,102,14,0.829),0 0 100px red,0 0 140px #e6ad02,0 0 180px rgba(238,211,11,0.953); }
+  50% { box-shadow: 0 0 80px rgba(255,51,102,0.6),0 0 120px rgba(255,51,102,0.45),0 0 160px rgba(255,51,102,0.35),0 0 200px rgba(255,51,102,0.25); }
+  100% { box-shadow: 0 0 70px rgba(255,51,102,0.55),0 0 110px rgba(255,51,102,0.4),0 0 150px rgba(255,51,102,0.3),0 0 190px rgba(255,51,102,0.2); }
+}
+.content { display: none; animation: fadeUp .7s ease forwards; }
+.content.active { display: block; }
+@keyframes fadeUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+.title {
+text-align: center;
+font-family: 'Dancing Script', cursive;
+font-size: 3.2em;
+color: #ff3366;
+text-shadow: 0 0 25px #ff3366;
+margin-bottom: 20px;
+}
+@media (min-width: 600px) { .title { font-size: 3.8em; } }
+@media (min-width: 768px) { .title { font-size: 4.3em; } .scrapbook { padding: 50px 40px; } }
+.cassette { width: 260px; max-width: 85%; display: block; margin: 0 auto 25px; transform: rotate(6deg); }
+.cassette img { width: 100%; border-radius: 12px; box-shadow: 0 0 30px rgba(255,150,51,0.6); }
+.quote-note { max-width: 90%; margin: 20px auto 40px; position: relative; transform: rotate(3deg); }
+.quote-clip { position: absolute; top: -30px; left: 50%; transform: translateX(-50%); width: 60px; }
+.torn-paper { background: #1a1a2e; padding: 30px 25px; border-radius: 18px; text-align: center; border: 2px dashed #ff3366; box-shadow: 0 15px 40px rgba(0,0,0,.8); }
+.quote-text { font-family: 'Dancing Script', cursive; font-size: 2.2em; color: #ff6699; line-height: 1.2; }
+.quote-sub { margin-top: 15px; font-size: 1.3em; color: #00ffff; }
+@media (min-width: 600px) { .quote-text { font-size: 2.7em; } .quote-sub { font-size: 1.4em; } }
+.you-note { max-width: 90%; margin: 40px auto 70px; position: relative; transform: rotate(5deg); }
+.you-note .torn-paper { padding: 35px; font-family: 'Dancing Script', cursive; font-size: 2.4em; color: #ff6699; text-shadow: 0 0 15px #ff3366; line-height: 1.2; }
+.you-note .quote-sub { font-size: 1.4em; color: #00ffff; margin-top: 20px; }
+@media (min-width: 600px) { .you-note .torn-paper { font-size: 3em; } .you-note .quote-sub { font-size: 1.6em; } }
+.bottom-nav {
+position: fixed; bottom: 0; left: 0; width: 100%; background: rgba(20,20,30,0.95); padding: 10px 0;
+display: flex; justify-content: center; gap: 15px; flex-wrap: wrap; box-shadow: 0 -10px 30px rgba(255,255,51,0.3); z-index: 99; border-top: 2px solid #333;
+}
+.bottom-nav button {
+padding: 9px 16px; font-size: 1.1em; border-radius: 12px; border: 2px solid #ff3366; background: linear-gradient(145deg,#333,#111);
+color: #ff3366; cursor: pointer; transition: .3s; min-width: 90px;
+}
+.bottom-nav button:hover { background: #ff3366; color: #000; transform: scale(1.1); }
+#home.active ~ .bottom-nav { display: none; }
+.washi { height: 35px; background: url('https://p.kindpng.com/picc/s/731-7314491_black-washitape-washi-tape-paper-scrapbook-handmade-washi.png') center/cover no-repeat; margin: 35px 0; opacity: .85; }
+@media (min-width: 768px) { .washi { height: 40px; margin: 40px 0; } }
+.menu-items {
+display: grid;
+grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+gap: 30px;
+margin-top: 15px;
+}
+@media (max-width: 767px) { .menu-items { grid-template-columns: 1fr; gap: 25px; } }
+.item {
+background: #1a1a2e;
+padding: 12px;
+border-radius: 22px;
+box-shadow: 0 10px 30px rgba(0,0,0,.7);
+transition: .3s;
+position: relative;
+overflow: hidden;
+}
+.item:hover { transform: translateY(-8px); }
+.polaroid { background: #000; padding: 10px 10px 28px; border: 8px solid #222; box-shadow: 0 12px 25px rgba(0,0,0,.8); position: relative; }
+.polaroid img { width: 100%; height: 180px; object-fit: cover; border-radius: 6px; display: block; }
+@media (min-width: 600px) { .polaroid img { height: 200px; } }
+.price-overlay {
+position: absolute; bottom: 8px; left: 0; right: 0; background: rgba(0,0,0,0.75); color: #00ffff;
+font-size: 1.6em; text-align: center; padding: 8px; opacity: 0; transition: opacity 0.4s; pointer-events: none;
+}
+.item:hover .price-overlay { opacity: 1; }
+.item h3 { text-align: center; font-size: 1.7em; color: #ff6699; margin: 12px 0 6px; }
+.section-heading {
+text-align: center;
+color: #00ffff;
+font-size: 2.5em;
+margin: 40px 0 20px;
+font-family: 'Dancing Script', cursive;
+text-shadow: 0 0 15px #00ffff;
+}
+.contact-note {
+max-width: 90%;
+margin: 40px auto 90px;
+padding: 30px;
+background: #1a1a2e;
+border-radius: 20px;
+border: 2px dashed #00ffff;
+box-shadow: 0 20px 40px rgba(0,0,0,.8);
+text-align: center;
+font-size: 1.4em;
+transform: rotate(-2deg);
+}
+.contact-note p { margin: 15px 0; color: #00ffff; }
+/* Section Hero Image */
+.section-hero {
+  width: 90%;
+  max-width: 900px;
+  margin: 30px auto 40px;
+}
+.section-hero .image-box {
+  width: 100%;
+}
+</style>
+</head>
+<body>
+<div class="scrapbook">
+
+<!-- HOME -->
+<div id="home" class="content active" style="padding: 10px;">
+
+  <h1 class="title" style="text-align:center;">RD Cafeteria</h1>
+
+  <div class="cassette" style="display:flex; justify-content:center;">
+    <img src="images/s7.jpg.webp" alt="Retro Cassette"
+         style="max-width:100%; height:auto;">
+  </div>
+
+  <div class="quote-note" style="display:flex; justify-content:center; margin-top:15px;">
+    <img src="images/pin.png"
+         class="quote-clip"
+         alt="Red Paper Clip"
+         style="width:30px; height:auto; margin-right:5px;">
+
+    <div class="torn-paper"
+         style="max-width:90%; padding:10px; text-align:center;">
+      <p class="quote-text" style="font-size:16px;">
+        "Good food, good mood –<br>that's the canteen rule!"
+      </p>
+      <p class="quote-sub" style="font-size:14px;">
+        Fuel for late-night studies & gossips 🔥
+      </p>
+    </div>
+  </div>
+
+  <center>
+    <div class="image-box"
+         style="
+           width:100%;
+           max-width:600px;
+           margin-top:20px;
+         ">
+      <img src="images/m14.jpg"
+           alt="Cafeteria Vibe"
+           style="
+             width:100%;
+             height:auto;
+             border-radius:10px;
+           ">
+    </div>
+  </center>
+
+</div>
+
+
+<!-- BREAKFAST -->
+<div id="breakfast" class="content">
+<h1 class="title">Morning Vibes</h1>
+<div class="section-hero">
+<div class="image-box">
+<img src="images/m7.jpg" alt="South Indian Breakfast" style="
+  filter: blur(2px) brightness(0.9) saturate(1.3);
+  transform: scale(1.05);">
+</div>
+</div>
+<div class="washi"></div>
+<h2 class="section-heading">Veg</h2>
+<div class="menu-items">
+<div class="item"><div class="polaroid"><img src="images/dosai.jpg" alt="Dosa"><div class="price-overlay">₹30</div></div><h3>Dosa</h3></div>
+<div class="item"><div class="polaroid"><img src="images/1.jpeg" alt="Podi Dosa"><div class="price-overlay">₹40</div></div><h3>Podi Dosa</h3></div>
+<div class="item"><div class="polaroid"><img src="images/2.jpg.webp" alt="Onion Dosa"><div class="price-overlay">₹40</div></div><h3>Onion Dosa</h3></div>
+<div class="item"><div class="polaroid"><img src="images/3.jpeg" alt="Masala Dosa"><div class="price-overlay">₹30</div></div><h3>Masala Dosa</h3></div>
+<div class="item"><div class="polaroid"><img src="images/4.jpeg" alt="Roast"><div class="price-overlay">₹50</div></div><h3>Roast</h3></div>
+<div class="item"><div class="polaroid"><img src="images/5.jpg.webp" alt="Podi Roast"><div class="price-overlay">₹60</div></div><h3>Podi Roast</h3></div>
+<div class="item"><div class="polaroid"><img src="images/6.jpeg" alt="Onion Roast"><div class="price-overlay">₹60</div></div><h3>Onion Roast</h3></div>
+<div class="item"><div class="polaroid"><img src="images/chappathi.jpg" alt="Chapathi"><div class="price-overlay">₹50</div></div><h3>Chapathi (2 Pcs)</h3></div>
+<div class="item"><div class="polaroid"><img src="images/poori.jpg" alt="Poori"><div class="price-overlay">₹60</div></div><h3>Poori (2 Pcs)</h3></div>
+<div class="item"><div class="polaroid"><img src="images/pongal.jpg" alt="Pongal"><div class="price-overlay">₹50</div></div><h3>Pongal</h3></div>
+<div class="item"><div class="polaroid"><img src="images/idli.jpg" alt="Idly"><div class="price-overlay">₹20</div></div><h3>Idly (Set)</h3></div>
+<div class="item"><div class="polaroid"><img src="images/vegpulav.jpg" alt="Veg Pulav"><div class="price-overlay">₹60</div></div><h3>Veg Pulav</h3></div>
+</div>
+<h2 class="section-heading">Non-Veg</h2>
+<div class="menu-items">
+<div class="item"><div class="polaroid"><img src="images/7.jpeg" alt="Egg Dosa"><div class="price-overlay">₹40</div></div><h3>Egg Dosa</h3></div>
+<div class="item"><div class="polaroid"><img src="images/8.jpeg" alt="Egg Roast"><div class="price-overlay">₹60</div></div><h3>Egg Roast</h3></div>
+<div class="item"><div class="polaroid"><img src="images/chappathi.jpg" alt="Egg Chapathi"><div class="price-overlay">₹60</div></div><h3>Egg Chapathi</h3></div>
+<div class="item"><div class="polaroid"><img src="images/9.jpeg" alt="Half Boil"><div class="price-overlay">₹20</div></div><h3>Half Boil</h3></div>
+<div class="item"><div class="polaroid"><img src="images/10.avif" alt="Full Boil"><div class="price-overlay">₹20</div></div><h3>Full Boil</h3></div>
+<div class="item"><div class="polaroid"><img src="images/11.jpeg" alt="Omelet"><div class="price-overlay">₹30</div></div><h3>Omelet</h3></div>
+</div>
+<div class="you-note">
+<img src="https://www.clipartmax.com/png/middle/21-211493_paperclip2-red-paper-clip-red-png.png" class="quote-clip">
+<div class="torn-paper">
+<p class="quote-text">You</p>
+<p class="quote-sub">are what you eat...<br>so eat something awesome! 🥞</p>
+</div>
+</div>
+</div>
+
+<!-- LUNCH -->
+<div id="lunch" class="content">
+<h1 class="title">Lunch Diaries</h1>
+<div class="section-hero">
+<div class="image-box">
+<img src="images/m10.jpg" alt="South Indian Breakfast" style="
+  filter: blur(2px) brightness(0.9) saturate(1.3);
+  transform: scale(1.05);">
+</div>
+</div>
+<div class="washi"></div>
+<h2 class="section-heading">Veg</h2>
+<div class="menu-items">
+<div class="item"><div class="polaroid"><img src="images/12.jpeg" alt="Veg Rice"><div class="price-overlay">₹70</div></div><h3>Veg Rice</h3></div>
+<div class="item"><div class="polaroid"><img src="images/13.jpeg" alt="Mushroom Rice"><div class="price-overlay">₹80</div></div><h3>Mushroom Rice</h3></div>
+<div class="item"><div class="polaroid"><img src="images/14.jpeg" alt="Kalavai Rice"><div class="price-overlay">₹70</div></div><h3>Kalavai Rice</h3></div>
+<div class="item"><div class="polaroid"><img src="images/sambar.jpg" alt="Meals"><div class="price-overlay">₹100</div></div><h3>Meals</h3></div>
+<div class="item"><div class="polaroid"><img src="images/meals.jpg" alt="Meals Staff"><div class="price-overlay">₹150</div></div><h3>Meals (Staff)</h3></div>
+</div>
+<h2 class="section-heading">Non-Veg</h2>
+<div class="menu-items">
+<div class="item"><div class="polaroid"><img src="images/chickenfriedrice.jpeg" alt="Chicken Rice"><div class="price-overlay">₹100</div></div><h3>Chicken Rice</h3></div>
+<div class="item"><div class="polaroid"><img src="images/15.jpeg" alt="Egg Rice"><div class="price-overlay">₹80</div></div><h3>Egg Rice</h3></div>
+<div class="item"><div class="polaroid"><img src="images/chickenbiryani.jpg" alt="Chicken Biryani"><div class="price-overlay">₹100</div></div><h3>Chicken Biryani</h3></div>
+<div class="item"><div class="polaroid"><img src="images/16.jpg" alt="Egg Biryani"><div class="price-overlay">₹90</div></div><h3>Egg Biryani</h3></div>
+<div class="item"><div class="polaroid"><img src="images/17.jpeg" alt="M.T Biryani"><div class="price-overlay">₹80</div></div><h3>M.T Biryani</h3></div>
+<div class="item"><div class="polaroid"><img src="images/chickenoodles.jpg" alt="Chicken Noodles"><div class="price-overlay">₹100</div></div><h3>Chicken Noodles</h3></div>
+<div class="item"><div class="polaroid"><img src="images/18.jpeg" alt="Egg Noodles"><div class="price-overlay">₹80</div></div><h3>Egg Noodles</h3></div>
+<div class="item"><div class="polaroid"><img src="images/19.jpeg" alt="Chicken Manchurian"><div class="price-overlay">₹80</div></div><h3>Chicken Manchurian</h3></div>
+<div class="item"><div class="polaroid"><img src="images/chickengravy.jpg" alt="Chicken Gravy"><div class="price-overlay">₹70</div></div><h3>Chicken Gravy</h3></div>
+<div class="item"><div class="polaroid"><img src="images/p1.jpg" alt="Pepper Chicken"><div class="price-overlay">₹80</div></div><h3>Pepper Chicken</h3></div>
+<div class="item"><div class="polaroid"><img src="images/chicken65.jpg" alt="Chicken 65"><div class="price-overlay">₹50</div></div><h3>Chicken 65</h3></div>
+<div class="item"><div class="polaroid"><img src="images/legpiece.jpg" alt="Grill"><div class="price-overlay">₹100</div></div><h3>Grill (Full/Half/Quarter)</h3></div>
+</div>
+<div class="you-note">
+<img src="https://www.clipartmax.com/png/middle/21-211493_paperclip2-red-paper-clip-red-png.png" class="quote-clip">
+<div class="torn-paper">
+<p class="quote-text">You</p>
+<p class="quote-sub">are what you eat...<br>so eat something awesome! 🍚</p>
+</div>
+</div>
+</div>
+
+<!-- SNACKS -->
+<div id="snacks" class="content">
+<h1 class="title">Snack Break</h1>
+<div class="section-hero">
+<div class="image-box">
+<!-- <img src="https://www.indianhealthyrecipes.com/wp-content/uploads/2021/03/snacks-recipes-fb.jpg" alt="Evening Snacks"> -->
+ <img src="images/m6.jpg" alt="South Indian Breakfast" style="
+  filter: blur(2px) brightness(0.9) saturate(1.3);
+  transform: scale(1.05);">
+</div>
+</div>
+<div class="washi"></div>
+<h2 class="section-heading">Veg</h2>
+<div class="menu-items">
+<div class="item"><div class="polaroid"><img src="images/s1.jpg" alt="Puffs"><div class="price-overlay">₹20</div></div><h3>Puffs</h3></div>
+<div class="item"><div class="polaroid"><img src="images/vegcutlet.webp" alt="Cutlet"><div class="price-overlay">₹20</div></div><h3>Cutlet</h3></div>
+<div class="item"><div class="polaroid"><img src="images/vegroll.jpg" alt="Roll"><div class="price-overlay">₹30</div></div><h3>Roll</h3></div>
+<div class="item"><div class="polaroid"><img src="images/s2.jpeg" alt="Samosa"><div class="price-overlay">₹20</div></div><h3>Samosa</h3></div>
+<div class="item"><div class="polaroid"><img src="images/s3.jpeg" alt="Cake Slice"><div class="price-overlay">₹20</div></div><h3>Cake Slice</h3></div>
+<div class="item"><div class="polaroid"><img src="images/s4.jpeg" alt="Donut"><div class="price-overlay">₹20</div></div><h3>Donut</h3></div>
+<div class="item"><div class="polaroid"><img src="images/s3.jpg" alt="Veg Sandwich"><div class="price-overlay">₹30</div></div><h3>Veg Sandwich</h3></div>
+<div class="item"><div class="polaroid"><img src="images/s4.jpg.webp" alt="Paruppu Vadai"><div class="price-overlay">₹20</div></div><h3>Paruppu Vadai</h3></div>
+<div class="item"><div class="polaroid"><img src="images/s5.webp" alt="Ulunthu Vadai"><div class="price-overlay">₹20</div></div><h3>Ulunthu Vadai</h3></div>
+<div class="item"><div class="polaroid"><img src="images/s6.jpg" alt="Bread Sandwich"><div class="price-overlay">₹20</div></div><h3>Bread Sandwich</h3></div>
+<div class="item"><div class="polaroid"><img src="images/s7.jpg.webp" alt="Brownie"><div class="price-overlay">₹30</div></div><h3>Brownie</h3></div>
+<div class="item"><div class="polaroid"><img src="images/s7.jpg" alt="Ice Cream"><div class="price-overlay">₹30-60</div></div><h3>Ice Cream</h3></div>
+<div class="item"><div class="polaroid"><img src="images/s9.jpg.avif" alt="Fresh Juice"><div class="price-overlay">₹50</div></div><h3>Fresh Juice</h3></div>
+<div class="item"><div class="polaroid"><img src="images/s9.jpg.avif" alt="Cool Drinks"><div class="price-overlay">₹20</div></div><h3>Cool Drinks</h3></div>
+</div>
+<h2 class="section-heading">Non-Veg</h2>
+<div class="menu-items">
+<div class="item"><div class="polaroid"><img src="images/v1.JPG" alt="Egg Sandwich"><div class="price-overlay">₹30</div></div><h3>Egg Sandwich</h3></div>
+<div class="item"><div class="polaroid"><img src="images/v2.jpg.avif" alt="Chicken Sandwich"><div class="price-overlay">₹30</div></div><h3>Chicken Sandwich</h3></div>
+<div class="item"><div class="polaroid"><img src="images/v3.jpg" alt="Bread Omelet"><div class="price-overlay">₹40</div></div><h3>Bread Omelet</h3></div>
+<div class="item"><div class="polaroid"><img src="images/v4.jpeg" alt="Egg Kothu Parotta"><div class="price-overlay">₹80</div></div><h3>Egg Kothu Parotta</h3></div>
+<div class="item"><div class="polaroid"><img src="images/v5.jpg" alt="Chicken Kothu Parotta"><div class="price-overlay">₹100</div></div><h3>Chicken Kothu Parotta</h3></div>
+<div class="item"><div class="polaroid"><img src="images/v6.jpg" alt="Chilly Parotta"><div class="price-overlay">₹80</div></div><h3>Chilly Parotta</h3></div>
+<div class="item"><div class="polaroid"><img src="images/v7.jpg" alt="Illai Parotta Chicken"><div class="price-overlay">₹100</div></div><h3>Illai Parotta (Chicken)</h3></div>
+<div class="item"><div class="polaroid"><img src="images/v8.jpg" alt="Shawarma"><div class="price-overlay">₹100</div></div><h3>Shawarma</h3></div>
+<div class="item"><div class="polaroid"><img src="images/v9.jpg" alt="Gobi Chilly"><div class="price-overlay">₹40</div></div><h3>Gobi Chilly</h3></div>
+<div class="item"><div class="polaroid"><img src="images/v10.jpeg" alt="Mushroom Chilly"><div class="price-overlay">₹50</div></div><h3>Mushroom Chilly</h3></div>
+<div class="item"><div class="polaroid"><img src="images/v11.jpg" alt="Pakoda"><div class="price-overlay">₹20</div></div><h3>Pakoda (1 Plate)</h3></div>
+<div class="item"><div class="polaroid"><img src="images/v12.jpg.webp" alt="BF Combo"><div class="price-overlay">₹100</div></div><h3>BF Combo</h3></div>
+</div>
+<div class="you-note">
+<img src="https://www.clipartmax.com/png/middle/21-211493_paperclip2-red-paper-clip-red-png.png" class="quote-clip">
+<div class="torn-paper">
+<p class="quote-text">You</p>
+<p class="quote-sub">are what you eat...<br>so eat something awesome! 🍫</p>
+</div>
+</div>
+</div>
+
+<!-- BEVERAGES -->
+<div id="beverages" class="content">
+<h1 class="title">Sip & Chill ☕</h1>
+<div class="section-hero">
+<div class="image-box">
+ <img src="images/m4.jpg" alt="South Indian Breakfast" style="
+  filter: blur(2px) brightness(0.9) saturate(1.3);
+  transform: scale(1.05);">
+</div>
+</div>
+<div class="washi"></div>
+<h2 class="section-heading">Beverages (Common)</h2>
+<div class="menu-items">
+<div class="item"><div class="polaroid"><img src="images/b1.jpg" alt="Tea"><div class="price-overlay">₹10</div></div><h3>Tea</h3></div>
+<div class="item"><div class="polaroid"><img src="images/b2.jpeg" alt="Coffee"><div class="price-overlay">₹15</div></div><h3>Coffee</h3></div>
+<div class="item"><div class="polaroid"><img src="images/b3.jpg" alt="Milk"><div class="price-overlay">₹20</div></div><h3>Milk</h3></div>
+<div class="item"><div class="polaroid"><img src="images/b4.png" alt="Boost"><div class="price-overlay">₹25</div></div><h3>Boost</h3></div>
+<div class="item"><div class="polaroid"><img src="images/b5.jpg" alt="Horlicks"><div class="price-overlay">₹25</div></div><h3>Horlicks</h3></div>
+<div class="item"><div class="polaroid"><img src="images/milkshake.jpg" alt="Milk Shake"><div class="price-overlay">₹50</div></div><h3>Milk Shake</h3></div>
+<div class="item"><div class="polaroid"><img src="images/b6.jpg.avif" alt="Black Tea"><div class="price-overlay">₹10</div></div><h3>Black Tea</h3></div>
+<div class="item"><div class="polaroid"><img src="images/b8.jpeg" alt="Black Coffee"><div class="price-overlay">₹12</div></div><h3>Black Coffee</h3></div>
+</div>
+<div class="you-note">
+<img src="https://www.clipartmax.com/png/middle/21-211493_paperclip2-red-paper-clip-red-png.png" class="quote-clip">
+<div class="torn-paper">
+<p class="quote-text">You</p>
+<p class="quote-sub">deserve a break...<br>grab a sip! ☕</p>
+</div>
+</div>
+</div>
+
+<!-- CONTACT -->
+<div id="contact" class="content">
+<h1 class="title">Reach Us</h1>
+<div class="contact-note">
+<p>📞 Phone: +91 7373747474</p>
+<p>🕒 Timings: 9 AM - 3:30 PM (Mon-Sat)</p>
+<p>💌 Suggestions? Talk to the counter!</p>
+</div>
+</div>
+
+</div>
+
+<div class="bottom-nav">
+<button onclick="showMenu('home')">Home</button>
+<button onclick="showMenu('breakfast')">Breakfast</button>
+<button onclick="showMenu('lunch')">Lunch</button>
+<button onclick="showMenu('snacks')">Snacks</button>
+<button onclick="showMenu('beverages')">Beverages</button>
+<button onclick="showMenu('contact')">Contact</button>
+</div>
+
+<script>
+function showMenu(id) {
+  document.querySelectorAll('.content').forEach(c => c.classList.remove('active'));
+  document.getElementById(id).classList.add('active');
+  if (window.innerWidth <= 767) {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
+}
+</script>
+</body>
+</html>
