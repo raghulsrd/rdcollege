@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>THE MENU | LET’S MEAT & EAT</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bungee+Spice&family=Inter:wght@400;700;900&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --black: #0a0a0a;
+            --charcoal: #141414;
+            --dark-red: #7a0000;
+            --blood-red: #bc0000;
+            --white: #f5f5f5;
+            --veg-green: #F3A900;
+            --font-main: 'Inter', sans-serif;
+            --font-fire: 'Bungee Spice', sans-serif;
+            --transition: 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { background-color: var(--black); color: var(--white); font-family: var(--font-main); overflow-x: hidden; }
+
+        /* --- HEADER --- */
+        header { padding: 40px 5%; text-align: center; border-bottom: 1px solid #222; }
+        .logo-link { font-family: var(--font-fire); font-size: 2.5rem; text-decoration: none; color: var(--white); }
+        .back-btn { display: inline-block; margin-top: 15px; color: var(--blood-red); text-decoration: none; font-weight: 900; letter-spacing: 2px; text-transform: uppercase; font-size: 0.8rem; }
+
+        /* --- ZONE LAYOUT --- */
+        .zone-section { padding: 80px 0; position: relative; overflow: hidden; }
+        .zone-veg { background: linear-gradient(to bottom, #0a0a0a, #f3aa004e); }
+        .zone-meat { background: linear-gradient(to bottom, #0a0a0a, #361b1b); }
+
+        .zone-title { text-align: center; font-family: var(--font-fire); font-size: 3.5rem; margin-bottom: 10px; text-transform: uppercase; }
+        .zone-subtitle { text-align: center; font-weight: 900; letter-spacing: 4px; margin-bottom: 50px; font-size: 1rem; }
+        .meat-text { color: var(--blood-red); }
+        .veg-text { color: var(--veg-green); }
+
+        /* --- 3D COVERFLOW --- */
+        .cf-wrapper {
+            position: relative; width: 100%; height: 500px;
+            display: flex; align-items: center; justify-content: center;
+            perspective: 1200px;
+        }
+
+        .cf-container { position: relative; width: 280px; height: 380px; transform-style: preserve-3d; }
+
+        .menu-card {
+            position: absolute; width: 100%; height: 100%;
+            background: #050505; border-radius: 20px; 
+            border: 1px solid #333; overflow: hidden;
+            transition: var(--transition); display: flex; flex-direction: column;
+            cursor: pointer; opacity: 0;
+        }
+
+        .menu-card.visible { opacity: 1; }
+        .menu-card img { width: 100%; height: 60%; object-fit: cover; filter: brightness(0.8); }
+        .card-body { padding: 20px; flex-grow: 1; display: flex; flex-direction: column; justify-content: space-between; }
+        .card-name { font-family: var(--font-fire); font-size: 1.3rem; line-height: 1.1; }
+        .card-price { font-weight: 900; font-size: 1.2rem; color: var(--white); }
+        .order-hint { font-size: 0.7rem; color: #555; text-transform: uppercase; font-weight: 800; }
+
+        .cf-nav {
+            position: absolute; top: 50%; width: 100%; transform: translateY(-50%);
+            display: flex; justify-content: space-between; padding: 0 8%; z-index: 100; pointer-events: none;
+        }
+        .arrow {
+            width: 60px; height: 60px; background: rgba(0,0,0,0.6); border: 1px solid #444;
+            color: white; font-size: 1.5rem; cursor: pointer; border-radius: 50%;
+            pointer-events: auto; transition: 0.3s; display: flex; align-items: center; justify-content: center;
+        }
+        .arrow:hover { background: var(--white); color: var(--black); }
+
+        footer { text-align: center; padding: 60px; background: #050505; border-top: 1px solid #1a1a1a; color: #444; font-size: 0.8rem; }
+
+        @media (max-width: 768px) {
+            .zone-title { font-size: 2.5rem; }
+            .cf-wrapper { height: 400px; }
+            .cf-container { width: 220px; height: 320px; }
+            .arrow { width: 45px; height: 45px; }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        
+        <a href="index.html" class="logo-link">LET’S MEAT & EAT MENU</a><br>
+        <a href="index.html" class="back-btn">← Back to Home</a>
+    </header>
+
+    <section class="zone-section zone-veg">
+        <h2 class="zone-title veg-text">VEG ZONE</h2>
+        <p class="zone-subtitle">PLANT POWERED HEAVYWEIGHTS</p>
+        
+        <div class="cf-wrapper">
+            <div class="cf-nav">
+                <button class="arrow" onclick="move('veg', -1)"><</button>
+                <button class="arrow" onclick="move('veg', 1)">></button>
+            </div>
+            <div class="cf-container" id="vegContainer"></div>
+        </div>
+    </section>
+
+    <section class="zone-section zone-meat">
+        <h2 class="zone-title meat-text">MEAT ZONE</h2>
+        <p class="zone-subtitle">PURE PROTEIN UNLEASHED</p>
+        
+        <div class="cf-wrapper">
+            <div class="cf-nav">
+                <button class="arrow" onclick="move('meat', -1)"><</button>
+                <button class="arrow" onclick="move('meat', 1)">></button>
+            </div>
+            <div class="cf-container" id="meatContainer"></div>
+        </div>
+    </section>
+
+    <footer>
+        &copy; 2025 LET’S MEAT & EAT | RD COLLEGE | CLICK ANY CARD TO ORDER
+    </footer>
+
+    <script>
+        const vegData = [
+    { name: "Veg Sandwich , #1/34", price: "₹40", img: "images/veg sandwich.jpeg" },
+    { name: "Chocolate Sandwich , #2/34", price: "₹40", img: "images/cs.jpeg" },
+    { name: "Veg Cheese Sandwich , #3/34", price: "₹50", img: "images/vcs.jpeg" },
+    { name: "Corn and Cheese Sandwich , #4/34", price: "₹50", img: "images/ccs.jpeg" },
+    { name: "Paneer Sandwich , #5/34", price: "₹60", img: "images/ps.jpeg" },
+    { name: "Veg Burger , #6/34", price: "₹50", img: "images/vb.jpeg" },
+    { name: "Veg Cheese Burger , #7/34", price: "₹55", img: "images/vcb.jpeg" },
+    { name: "Paneer Burger , #8/34", price: "₹60", img: "images/vpb.png" },
+    { name: "Paneer Cheese Burger , #9/34", price: "₹65", img: "images/pcb.jpeg" },
+    { name: "Classic Maggi , #10/34", price: "₹40", img: "images/cm.jpeg" },
+    { name: "Classic Cheese Maggi , #11/34", price: "₹50", img: "images/chm.jpeg" },
+    { name: "Peri Peri Maggi , #12/34", price: "₹50", img: "images/ppm.jpeg" },
+    { name: "Peri Peri Cheese Maggi , #13/34", price: "₹60", img: "images/peri peri cheese magi.jpeg" },
+    { name: "Veg Wrap , #14/34", price: "₹50", img: "https://images.unsplash.com/photo-1626700051175-6818013e1d4f?w=500&q=80" },
+    { name: "Vanilla Milkshake , #15/34", price: "₹40", img: "images/vms.jpeg" },
+    { name: "Chocolate Milkshake , #16/34", price: "₹50", img: "images/cms.jpeg" },
+    { name: "Rose Milkshake , #17/34", price: "₹50", img: "images/rm.jpeg" },
+    { name: "Butterscotch Milkshake , #18/34", price: "₹50", img: "images/bms.jpeg" },
+    { name: "Mango Milkshake , #19/34", price: "₹55", img: "https://images.unsplash.com/photo-1623065422902-30a2d299bbe4?w=500&q=80" },
+    { name: "Oreo Milkshake , #20/34", price: "₹60", img: "https://images.unsplash.com/photo-1572490122747-3968b75cc699?w=500&q=80" },
+    { name: "Lime Mint Mojito , #21/34", price: "₹45", img: "images/lmm.jpeg" },
+    { name: "Blue Curacao Mojito , #22/34", price: "₹45", img: "images/bm.jpeg" },
+    { name: "Mango Mojito , #23/34", price: "₹45", img: "images/mm.jpeg" },
+    { name: "Bubblegum Mojito , #24/34", price: "₹45", img: "images/bgm.jpeg" },
+    { name: "Black Tea , #25/34", price: "₹10", img: "images/bt.jpeg" },
+    { name: "Milk Tea , #26/34", price: "₹10", img: "images/t.jpeg" },
+    { name: "Green Tea , #27/34", price: "₹15", img: "https://images.unsplash.com/photo-1564890369478-c89ca6d9cde9?w=500&q=80" },
+    { name: "Black Coffee , #28/34", price: "₹15", img: "https://images.unsplash.com/photo-1514432324607-a09d9b4aefdd?w=500&q=80" },
+    { name: "Milk Coffee , #29/34", price: "₹15", img: "images/c.jpeg" },
+    { name: "Samosa , #30/34", price: "₹15", img: "images/s.jpeg" },
+    { name: "Classic Fries , #31/34", price: "₹50", img: "images/cf.jpeg" },
+    { name: "Peri Peri Fries , #32/34", price: "₹50", img: "images/ppf.jpeg" },
+    { name: "Mexican Fries , #33/34", price: "₹50", img: "images/mf.jpeg" },
+    { name: "Veg Loaded Fries , #34/34", price: "₹60", img: "images/vlf.jpeg" },
+];
+
+        const meatData = [
+            { name: "Chicken sandwich , #1/13", price: "₹50", img: "images/cs.png" },
+            { name: "Chicken Cheese Sandwich , #2/13", price: "₹55", img: "images/ccs.png" },
+            { name: "Peri Peri Chicken Sandwich, #3/13", price: "₹55", img: "images/ppcs.png" },
+            { name: "Peri Peri Chicken Cheese Sandwich , #4/13", price: "₹60", img: "images/ppccs.png" },
+            { name: "Chicken Burger , #5/13", price: "₹70", img: "images/cb.jpeg" },
+            { name: "Chicken Cheese Burger , #6/13", price: "₹75", img: "images/ccb.jpeg" },
+            { name: "Chicken Tower Burger , #7/13", price: "₹80", img: "images/ctb.jpeg" },
+            { name: "Egg Maggi , #8/13", price: "₹50", img: "images/em.jpeg" },
+            { name: "Chicken wrap , #9/13", price: "₹60", img: "images/cw.jpeg" },
+            { name: "Bread Omlette , #10/13", price: "₹50", img: "images/bo.jpeg" },
+            { name: "Chicken Loaded Fries , #11/13", price: "₹70", img: "images/clf.jpeg" },
+            { name: "Brownie , #12/13", price: "₹50", img: "images/b.jpeg" },
+            { name: "Brownie with Ice Cream , #13/13", price: "₹60", img: "images/bice.jpeg" },
+        ];
+
+        let vegIndex = 0;
+        let meatIndex = 0;
+
+        function initSection(containerId, data) {
+            const container = document.getElementById(containerId);
+            data.forEach((item, i) => {
+                const card = document.createElement('div');
+                card.className = 'menu-card';
+                card.onclick = () => window.location.href = 'index.html#contact';
+                card.innerHTML = `
+                    <img src="${item.img}" alt="food">
+                    <div class="card-body">
+                        <div>
+                            <h3 class="card-name">${item.name}</h3>
+                            <p class="order-hint">Click to Order Now</p>
+                        </div>
+                        <p class="card-price">${item.price}</p>
+                    </div>
+                `;
+                container.appendChild(card);
+            });
+        }
+
+        function updateCoverflow(containerId, currentIndex) {
+            const cards = document.getElementById(containerId).children;
+            const total = cards.length;
+
+            Array.from(cards).forEach((card, index) => {
+                // Calculate the shortest distance in a circular array
+                let offset = index - currentIndex;
+                
+                // Adjust offset for infinite looping
+                if (offset > total / 2) offset -= total;
+                if (offset < -total / 2) offset += total;
+
+                const absOffset = Math.abs(offset);
+
+                // Performance: Hide cards that are far away
+                if (absOffset > 2) {
+                    card.style.opacity = '0';
+                    card.style.visibility = 'hidden';
+                    card.style.pointerEvents = 'none';
+                } else {
+                    card.style.opacity = 1 - (absOffset * 0.3);
+                    card.style.visibility = 'visible';
+                    card.style.pointerEvents = offset === 0 ? 'auto' : 'none';
+                }
+
+                card.style.display = 'flex';
+
+                let translateX = offset * 220; 
+                let rotateY = offset * -45;
+                let translateZ = absOffset * -200;
+                let zIndex = 100 - absOffset;
+
+                if (offset === 0) {
+                    card.style.transform = `translateX(0) translateZ(150px) rotateY(0deg) scale(1.1)`;
+                    card.style.opacity = '1';
+                } else {
+                    card.style.transform = `translateX(${translateX}px) translateZ(${translateZ}px) rotateY(${rotateY}deg)`;
+                }
+                card.style.zIndex = zIndex;
+            });
+        }
+
+        function move(type, dir) {
+            if (type === 'veg') {
+                // Modulo operator for infinite loop (handles negative wraps too)
+                vegIndex = (vegIndex + dir + vegData.length) % vegData.length;
+                updateCoverflow('vegContainer', vegIndex);
+            } else {
+                meatIndex = (meatIndex + dir + meatData.length) % meatData.length;
+                updateCoverflow('meatContainer', meatIndex);
+            }
+        }
+
+        // Initialize
+        initSection('vegContainer', vegData);
+        initSection('meatContainer', meatData);
+        updateCoverflow('vegContainer', 0);
+        updateCoverflow('meatContainer', 0);
+    </script>
+</body>
+</html>

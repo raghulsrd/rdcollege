@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RD COLLEGE | LET’S MEAT & EAT | Daily Specials</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bungee+Spice&family=Inter:wght@400;700;900&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --black: #0a0a0a;
+            --charcoal: #141414;
+            --dark-red: #FF0033aa;
+            --blood-red: #FF0033aa;
+            --white: #f5f5f5;
+            --whatsapp-green: #F3A900;
+            --font-main: 'Inter', sans-serif;
+            --font-fire: 'Bungee Spice', sans-serif;
+            --transition: 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; scroll-behavior: smooth; }
+        body { background-color: var(--black); color: var(--white); font-family: var(--font-main); overflow-x: hidden; }
+
+        /* --- NAV --- */
+        .hamburger { position: fixed; top: 2rem; right: 2rem; z-index: 1000; cursor: pointer; background: var(--dark-red); padding: 15px; border-radius: 8px; display: flex; flex-direction: column; gap: 6px; }
+        .hamburger span { display: block; width: 30px; height: 3px; background: var(--white); }
+        .nav-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(10, 10, 10, 0.98); z-index: 999; display: flex; align-items: center; justify-content: center; transform: translateY(-100%); transition: var(--transition); }
+        .nav-overlay.active { transform: translateY(0); }
+        .nav-links { list-style: none; text-align: center; }
+        .nav-links a { font-family: var(--font-fire); font-size: 3rem; text-decoration: none; color: var(--white); }
+        /* Media query for mobile devices */
+@media (max-width: 768px) {
+    .nav-links a {
+        font-size: 1.8rem; /* Adjust this value to your liking */
+    }
+}
+        .nav-brand { color: var(--blood-red); font-weight: 900; margin-bottom: 20px; font-size: 1.2rem; letter-spacing: 5px; }
+
+        /* --- HERO --- */
+        #home { height: 100vh; display: flex; flex-direction: column; justify-content: center; align-items: center; background: linear-gradient(rgba(0,0,0,0.8), rgba(0,0,0,0.8)), url('images/photo.jpg'); background-size: cover; text-align: center; }
+        h1 { font-family: var(--font-fire); font-size: clamp(2.5rem, 10vw, 6rem); }
+        .subtitle { color: var(--blood-red); font-weight: 900; letter-spacing: 3px; margin-top: 10px; text-transform: uppercase; }
+
+        /* --- DAILY SPECIALS SECTION --- */
+        #daily-specials { padding: 80px 5%; background: var(--charcoal); }
+        .section-title { text-align: center; font-family: var(--font-fire); font-size: 3.5rem; margin-bottom: 10px; }
+        .section-tagline { text-align: center; color: #888; margin-bottom: 40px; font-weight: 700; letter-spacing: 2px; }
+
+        /* Day Selector */
+        .day-nav { display: flex; justify-content: center; flex-wrap: wrap; gap: 10px; margin-bottom: 50px; }
+        .day-btn { padding: 12px 25px; background: #222; border: 2px solid #333; color: #888; cursor: pointer; font-weight: 900; text-transform: uppercase; transition: 0.3s; border-radius: 4px; }
+        .day-btn.active { background: var(--blood-red); color: white; border-color: var(--blood-red); transform: scale(1.1); }
+        .day-btn.today::after { content: ' (TODAY)'; font-size: 0.6rem; display: block; color: rgba(255,255,255,0.6); }
+
+        /* Menu Grid */
+        .specials-display { max-width: 1100px; margin: 0 auto; display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 30px; min-height: 400px; }
+        
+        .special-card { background: var(--black); border-radius: 20px; border: 1px solid #222; overflow: hidden; position: relative; transition: var(--transition); opacity: 0; transform: translateY(20px); display: none; }
+        .special-card.show { display: block; opacity: 1; transform: translateY(0); }
+        .special-card:hover { border-color: var(--blood-red); transform: translateY(-5px); }
+        
+        .special-img { width: 100%; height: 250px; object-fit: cover; filter: grayscale(30%); }
+        .special-info { padding: 30px; }
+        .special-tag { color: var(--blood-red); font-weight: 900; font-size: 0.8rem; text-transform: uppercase; }
+        .special-name { font-family: var(--font-fire); font-size: 1.8rem; margin: 10px 0; }
+        .special-desc { color: #888; font-size: 0.95rem; margin-bottom: 20px; }
+        .special-price { font-weight: 900; font-size: 1.5rem; color: var(--white); }
+
+        /* --- CONTACT --- */
+        #contact { padding: 100px 10%; background: var(--black); text-align: center; }
+        .action-container { max-width: 800px; margin: 40px auto; display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+        .contact-box { background: var(--charcoal); padding: 30px; border-radius: 15px; border: 1px solid #222; }
+        .btn { padding: 18px; text-decoration: none; font-weight: 900; border-radius: 4px; display: block; transition: 0.3s; color: white; text-align: center; }
+        .btn-red { background: linear-gradient(100deg, #CC1500, #F3A900); }
+        .btn-whatsapp { background: linear-gradient(135deg, #F3A900, #CC1500); }
+
+        footer { text-align: center; padding: 40px; color: #444; border-top: 1px solid #1a1a1a; }
+
+        @media (max-width: 768px) { .action-container { grid-template-columns: 1fr; } .day-nav { gap: 5px; } .day-btn { padding: 10px 15px; font-size: 0.8rem; } }
+
+        .day-fire-card {
+            display: inline-block;
+            padding: 10px 40px;
+            background: #1a1a1a;
+            border: 4px solid; 
+            border-image-source: linear-gradient(100deg, #F3A900, #FF0033);
+            border-image-slice: 1;
+            box-shadow: 0 0 20px rgba(255, 0, 51, 0.4);
+            margin-bottom: 40px;
+            position: relative;
+        }
+
+        .day-fire-card h3 {
+            font-family: var(--font-fire);
+            font-size: 2rem;
+            margin: 0;
+            text-transform: uppercase;
+            letter-spacing: 4px;
+        }
+        /* Menu Grid - Forced Single Line */
+/* Container that holds the cards */
+.specials-display { 
+    max-width: 1400px; 
+    margin: 0 auto; 
+    display: flex; /* Switch to Flex for smoother fluid resizing */
+    flex-wrap: nowrap; /* Forces them to stay in one line */
+    gap: 20px; 
+    justify-content: center;
+    align-items: stretch;
+    padding: 10px;
+}
+
+/* The Cards */
+.special-card { 
+    background: var(--charcoal); 
+    border-radius: 20px; 
+    border: 1px solid #222; 
+    overflow: hidden; 
+    
+    /* This makes them all the same size and fluid */
+    flex: 1 1 0; /* Grow, Shrink, and start at 0 width to ensure equality */
+    min-width: 0; /* Critical for flex equality */
+    
+    display: flex;
+    flex-direction: column;
+    transition: var(--transition);
+}
+
+.special-card:hover {
+    transform: translateY(-10px);
+    border-color: var(--blood-red);
+}
+
+/* Mobile: Stack them when screen is too narrow */
+@media (max-width: 768px) { 
+    .specials-display {
+        flex-direction: column;
+        flex-wrap: wrap;
+    }
+    .special-card {
+        flex: 1 1 auto;
+        width: 100%;
+    }
+}
+    </style>
+</head>
+<body>
+
+    <div class="hamburger" id="menuToggle"><span></span><span></span><span></span></div>
+    
+    <nav class="nav-overlay" id="navOverlay">
+        <div class="nav-links">
+            <div class="nav-brand">RD</div>
+            <ul>
+                <li style="list-style: none;"><a href="#home">HOME</a></li>
+                <li style="list-style: none;"><a href="#daily-specials">TODAY'S SPECIAL</a></li>
+                <li style="list-style: none;"><a href="menu.html">FULL MENU</a></li>
+                <li style="list-style: none;"><a href="#contact">ORDER NOW</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <section id="home">
+        <p class="subtitle" style="margin-bottom: 10px; font-size: 20px;">OFFICIAL HUB OF RD COLLEGE</p>
+        <h1>LET’S MEAT & EAT</h1>
+    </section>
+
+    <section id="daily-specials">
+        <h2 class="section-title">RD COLLEGE SPECIALS</h2>
+        <p class="section-tagline">FRESH FROM THE GRILL FOR OUR STUDENTS</p>
+        
+        <div style="text-align: center;">
+            <div class="day-fire-card">
+                <h3 id="currentDayDisplay"></h3>
+            </div>
+        </div>
+
+        <div class="specials-display" id="specialsDisplay"></div>
+    </section>
+
+    <section id="contact">
+        <h2 class="section-title">COMMAND CENTER</h2>
+        <p style="color: #666; margin-bottom: 30px;">EXCLUSIVELY SERVING THE RD COLLEGE COMMUNITY</p>
+        <div class="action-container">
+            <div class="contact-box">
+                <p style="margin-bottom:15px">VOICE ORDER</p>
+                <a href="tel:6380052974" class="btn btn-red">CLICK TO CALL</a>
+            </div>
+            <div class="contact-box">
+                <p style="margin-bottom:15px">WHATSAPP ORDER</p>
+                <a href="https://wa.me/6380052974" class="btn btn-whatsapp">CLICK TO WHATSAPP</a>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; 2025 LET’S MEAT & EAT | RD COLLEGE CAMPUS</p>
+        <p style="font-size: 0.7rem; margin-top: 10px;">The No.1 Choice for RD College Students</p>
+    </footer>
+
+    <script>
+        const menuData = {
+            "Monday": [
+                { name: "Empty Briyani", price: "₹70", img: "images/eb.png" },
+                { name: "Chicken Briyani", price: "₹80", img: "images/cbr.jpeg" },
+                { name: "Veg Briyani", price: "₹60", img: "images/vb.png" }
+            ],
+            "Tuesday": [
+                { name: "Chicken Fried Rice", price: "₹80", img: "images/cfr.jpeg" },
+                { name: "Egg fried Rice", price: "₹60", img: "images/efr.jpeg" },
+                { name: "Fried Egg Noodles", price: "₹60", img: "images/fen.png" },
+                { name: "Fried Chicken Noodles", price: "₹80", img: "images/fcn.jpeg" }
+            ],
+            "Wednesday": [
+                { name: "Sambar Rice", price: "₹70", img: "images/sr.png" },
+                { name: "Curd Rice", price: "₹70", img: "images/cr.png" }
+            ],
+            "Thursday": [
+                { name: "Paratha With Veg Gravy", price: "₹50", img: "images/pvg.jpeg" },
+                { name: "Paratha With Non-Veg Gravy", price: "₹60", img: "images/pnvg.png" }
+            ],
+            "Friday": [
+                { name: "Chappati With Veg Gravy", price: "₹50", img: "images/cvg.jpeg" },
+                { name: "Chappati With Non-Veg Gravy", price: "₹60", img: "images/cnvg.jpeg" }
+            ]
+        };
+
+        document.addEventListener('DOMContentLoaded', () => {
+    const display = document.getElementById('specialsDisplay');
+    const dayHeading = document.getElementById('currentDayDisplay');
+    
+    // JS: Sun=0, Mon=1, Tue=2, Wed=3...
+    const realDayIndex = new Date().getDay();
+    
+    // Adjust: Monday becomes 0, Tuesday becomes 1
+    let adjustedIndex = realDayIndex - 1;
+    
+    // Weekend handling: If Sunday (-1) or Sat (5), show Monday (0)
+    if (adjustedIndex < 0 || adjustedIndex > 4) {
+        adjustedIndex = 0; 
+    }
+
+    const daysMap = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"];
+    const todayName = daysMap[adjustedIndex];
+    
+    dayHeading.innerText = `${todayName} Specials`;
+
+    const items = menuData[todayName] || [];
+    display.innerHTML = '';
+    
+    items.forEach(item => {
+        const card = document.createElement('div');
+        card.className = 'special-card show';
+        card.innerHTML = `
+            <img src="${item.img}" class="special-img" alt="${item.name}">
+            <div class="special-info">
+                <div>
+                    <span class="special-tag">RD Exclusive</span>
+                    <h3 class="special-name">${item.name}</h3>
+                    <p class="special-desc">Freshly prepared for ${todayName}</p>
+                </div>
+                <p class="special-price">${item.price}</p>
+            </div>
+        `;
+        display.appendChild(card);
+    });
+
+    // Mobile Menu Toggle
+    const toggle = document.getElementById('menuToggle');
+    const overlay = document.getElementById('navOverlay');
+    toggle.onclick = () => overlay.classList.toggle('active');
+    overlay.onclick = () => overlay.classList.remove('active');
+});
+    </script>
+</body>
+</html>
