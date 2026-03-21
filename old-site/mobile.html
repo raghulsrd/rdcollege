@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Mobile Right Side Menu</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: sans-serif;
+    }
+
+    header {
+      background-color: #003366;
+      color: white;
+      padding: 10px 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .logo {
+      font-size: 20px;
+    }
+
+    #menuToggle {
+      font-size: 26px;
+      background: none;
+      border: none;
+      color: white;
+      cursor: pointer;
+      z-index: 1100;
+    }
+
+    /* RIGHT SIDE MENU */
+    .side-menu {
+      position: fixed;
+      top: 0;
+      right: -100%;
+      width: 75%;
+      max-width: 300px;
+      height: 100vh;
+      background-color: #003366;
+      transition: right 0.3s ease;
+      z-index: 1050;
+      padding-top: 60px;
+    }
+
+    .side-menu.open {
+      right: 0;
+    }
+
+    .side-menu ul {
+      list-style: none;
+      padding: 0;
+    }
+
+    .side-menu ul li {
+      padding: 15px 20px;
+      border-bottom: 1px solid #555;
+    }
+
+    .side-menu ul li a {
+      color: white;
+      text-decoration: none;
+      display: block;
+    }
+
+    /* Dropdown */
+    .dropdown-content {
+      display: none;
+      flex-direction: column;
+      padding-left: 15px;
+    }
+
+    .dropdown.open .dropdown-content {
+      display: flex;
+    }
+
+    /* Optional: mobile-only */
+    @media (min-width: 768px) {
+      #menuToggle {
+        display: none;
+      }
+
+      .side-menu {
+        display: none;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <div class="logo">My College</div>
+    <button id="menuToggle">&#9776;</button>
+  </header>
+
+  <nav class="side-menu" id="sideMenu">
+    <ul>
+      <li><a href="#">Home</a></li>
+      <li class="dropdown">
+        <a href="#" class="dropdown-toggle">Academics &#9662;</a>
+        <ul class="dropdown-content">
+          <li><a href="#">UG Programmes</a></li>
+          <li><a href="#">PG Programmes</a></li>
+        </ul>
+      </li>
+      <li><a href="#">Contact</a></li>
+    </ul>
+  </nav>
+
+  <script>
+    const toggleBtn = document.getElementById('menuToggle');
+    const sideMenu = document.getElementById('sideMenu');
+
+    toggleBtn.addEventListener('click', () => {
+      sideMenu.classList.toggle('open');
+    });
+
+    // Dropdown toggle
+    const dropdownToggles = document.querySelectorAll('.dropdown-toggle');
+    dropdownToggles.forEach(toggle => {
+      toggle.addEventListener('click', (e) => {
+        e.preventDefault(); // Prevent '#' navigation
+        toggle.parentElement.classList.toggle('open');
+      });
+    });
+  </script>
+
+</body>
+</html>

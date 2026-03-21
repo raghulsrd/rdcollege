@@ -1,0 +1,1632 @@
+<noscript>
+    <meta http-equiv="refresh" content="1; url=/no-js.html" />
+</noscript>
+<script>
+    var system_rnfjc = parseInt(Math.random() * 10000000);
+    var http = 'https://';
+    var www = 'www.';
+    var domain = 'rdcollege';
+    var com = '.in';
+    var urlslash = '/';
+    var folderbase = 'skynetbee';
+
+    var doe = '2025-06-03';
+
+    //to delete variables
+    var secui = http;
+    var site = www + domain + com;
+    var root = "developers-scripts";
+    // /to delete variables
+
+    var brand = 'Skynet';
+
+    var sfolderbases = urlslash + folderbase + urlslash;
+    var sfolderbase = urlslash + folderbase;
+    var folderbases = folderbase + urlslash;
+    var website = http + www + domain + com;
+    var websites = http + www + domain + com + urlslash;
+    var webfolder = websites + folderbase;
+    var webfolders = webfolder + urlslash;
+
+    var icons_path = "skynet-framework/icons";
+    var icons_paths = "skynet-framework/icons/";
+    var icons = webfolders + icons_paths;
+    var icon = webfolders + icons_path;
+    var gphotos = icon;
+
+    var pid = "",
+        urll = "";
+
+    function include_js_or_css(filepath, frequency_of_updations = "") {
+        return new Promise((resolve, reject) => {
+            if (frequency_of_updations != "") {
+                if (filepath.includes("?"))
+                    filepath += "&system_cache_version=" + (system_js_cache_erase.includes(frequency_of_updations) ? system_rnfjc : system_js_cache_erase);
+                else
+                    filepath += "?system_cache_version=" + (system_js_cache_erase.includes(frequency_of_updations) ? system_rnfjc : system_js_cache_erase);
+            }
+
+            const basepath = filepath.split("?")[0];
+            const fileext = basepath.split('.').pop().toLowerCase();
+
+            if (fileext == "js" || fileext == "info") {
+                const script = document.createElement('script');
+                script.src = filepath;
+                script.type = "text/javascript";
+                script.onload = resolve;
+                script.onerror = reject;
+                document.head.appendChild(script);
+            } else {
+                const link = document.createElement('link');
+                link.rel = "stylesheet";
+                link.href = filepath;
+                document.head.appendChild(link);
+                resolve(); // CSS doesn't block, assume success
+            }
+        });
+    }
+
+
+    function include(filepath, frequency_of_updations = "") {
+        return include_js_or_css(filepath, frequency_of_updations);
+    }
+    //to delete
+    function security(grant) {}
+    // /to delete
+</script>
+<script>
+    var parts = window.location.search.substr(1).split("&");
+    var $_GET = {};
+    for (var i = 0; i < parts.length; i++) {
+        var temp = parts[i].split("=");
+        $_GET[decodeURIComponent(temp[0])] = decodeURIComponent(temp[1]);
+    }
+
+    function get(id) {
+        return $_GET[id];
+    }
+
+    function str_replace(toreplace, replacewith, stringi) {
+        stringi = stringi.replace(toreplace, replacewith);
+        stringi = stringi.replace(toreplace, replacewith);
+        stringi = stringi.replace(toreplace, replacewith);
+        stringi = stringi.replace(toreplace, replacewith);
+        stringi = stringi.replace(toreplace, replacewith);
+        stringi = stringi.replace(toreplace, replacewith);
+        stringi = stringi.replace(toreplace, replacewith);
+        stringi = stringi.replace(toreplace, replacewith);
+        stringi = stringi.replace(toreplace, replacewith);
+        stringi = stringi.replace(toreplace, replacewith);
+        stringi = stringi.replace(toreplace, replacewith);
+        stringi = stringi.replace(toreplace, replacewith);
+        return stringi.replace(toreplace, replacewith);
+    }
+
+    function strlen(string) {
+        return string.length;
+    }
+
+    function substr(string, start, end) {
+        return string.substring(start, end);
+    }
+
+    function count(array) {
+        return array.length;
+    }
+
+    function substr_replace(search, replacewith, string) {
+        //~regex
+        var escapedFind = search.replace(/([.*+?^=!:${}()|\[\]\/\\])/g, "\\$1");
+        //~~regex
+        return string.replace(new RegExp(escapedFind, "g"), replacewith);
+        //return string.replace(/search/g, replacewith);
+    }
+
+    function substr_count(string, word, startpos) {
+        var c = 0;
+        var length = string.length;
+        for (var i = startpos; i < string.length; i++) {
+            if (word == string.substr(i, word.length)) c++;
+        }
+        return c;
+    }
+
+    function array_push(array, value) {
+        array.push(value);
+        return array;
+    }
+
+    function ucwords(string) {
+        return titleCase(string);
+    }
+
+    function ord(char, num) {
+        if (num === undefined) num = 0;
+        return char.charCodeAt(num);
+    }
+
+    function chr(num) {
+        return String.fromCharCode(num);
+    }
+
+    function mb_strimwidth(string, start, width, trimmarker) {
+        var trimmakerWidth = mb_strwidth(trimmarker),
+            i = start,
+            l = string.length,
+            trimmedLength = 0,
+            trimmedStr = "";
+        for (; i < l; i++) {
+            var c = string.charAt(i),
+                charWidth = mb_strwidth(c),
+                next = string.charAt(i + 1),
+                nextWidth = mb_strwidth(next);
+            trimmedLength += charWidth;
+            trimmedStr += c;
+            if (trimmedLength + trimmakerWidth + nextWidth > width) {
+                trimmedStr += trimmarker;
+                break;
+            }
+        }
+        return trimmedStr;
+    }
+
+    function mb_strwidth(str) {
+        var l = str.length,
+            c = "",
+            length = 0;
+        for (var i = 0; i < l; i++) {
+            c = str.charCodeAt(i);
+            if (0x0000 <= c && c <= 0x0019) {
+                length += 0;
+            } else if (0x0020 <= c && c <= 0x1fff) {
+                length += 1;
+            } else if (0x2000 <= c && c <= 0xff60) {
+                length += 2;
+            } else if (0xff61 <= c && c <= 0xff9f) {
+                length += 1;
+            } else if (0xffa0 <= c) {
+                length += 2;
+            }
+        }
+        return length;
+    }
+
+    function strtolower(string) {
+        return string.toLowerCase();
+    }
+
+    function checkfor(mystring, word) {
+        if (mystring.includes(word)) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    var echomsgg = "";
+
+    function echo(msg) {
+        echomsgg = echomsgg + msg;
+    }
+    var echomainmsgg = "";
+
+    function echo_main(msg) {
+        echomainmsgg = echomainmsgg + msg;
+    }
+
+    function cout(divn = "container") {
+        //$("#primary_container").append(echomainmsgg);
+        $("#" + divn).append(echomsgg);
+        echomsgg = "";
+        main2();
+    }
+
+
+    function explode(splitter, stringi) {
+        return stringi.split(splitter);
+    }
+
+    function str_replace(toreplace, replacewith, stringi) {
+        stringi = stringi.replace(toreplace, replacewith);
+        stringi = stringi.replace(toreplace, replacewith);
+        stringi = stringi.replace(toreplace, replacewith);
+        stringi = stringi.replace(toreplace, replacewith);
+        stringi = stringi.replace(toreplace, replacewith);
+        stringi = stringi.replace(toreplace, replacewith);
+        stringi = stringi.replace(toreplace, replacewith);
+        stringi = stringi.replace(toreplace, replacewith);
+        stringi = stringi.replace(toreplace, replacewith);
+        stringi = stringi.replace(toreplace, replacewith);
+        stringi = stringi.replace(toreplace, replacewith);
+        stringi = stringi.replace(toreplace, replacewith);
+        return stringi.replace(toreplace, replacewith);
+    }
+
+    function trim2(data) {
+        return data.trim();
+    }
+</script>
+<script>
+function cl(
+    content1 = "Nothing Passed",
+    content2 = "Nothing Passed",
+    content3 = "Nothing Passed",
+    content4 = "Nothing Passed",
+    content5 = "Nothing Passed",
+    content6 = "Nothing Passed",
+    content7 = "Nothing Passed",
+    content8 = "Nothing Passed",
+    content9 = "Nothing Passed",
+    content10 = "Nothing Passed"
+) {
+    console.log("-------------------------------------");
+    const err = new Error();
+    const lines = err.stack.split("\n");
+    console.log(err.stack);
+    //const match = lines[2].match(/at (\S+) \((.*?):(\d+):\d+\)/);
+    // console.log("File : "+match[2]);
+    // console.log("Function : "+match[1]);
+    // console.log("Line : "+match[[3]]);
+    if (content1 != "Nothing Passed") console.log("Content 1 : " + content1);
+    if (content2 != "Nothing Passed") console.log("Content 2 : " + content2);
+    if (content3 != "Nothing Passed") console.log("Content 3 : " + content3);
+    if (content4 != "Nothing Passed") console.log("Content 4 : " + content4);
+    if (content5 != "Nothing Passed") console.log("Content 5 : " + content5);
+    if (content6 != "Nothing Passed") console.log("Content 6 : " + content6);
+    if (content7 != "Nothing Passed") console.log("Content 7 : " + content7);
+    if (content8 != "Nothing Passed") console.log("Content 8 : " + content8);
+    if (content9 != "Nothing Passed") console.log("Content 9 : " + content9);
+    if (content10 != "Nothing Passed") console.log("Content 10 : " + content10);
+    console.log("-------------------------------------");
+}
+</script>
+<script>
+
+function deqry(msg) {
+    return str_replace(
+        "qj7iqxj44bq",
+        ":",
+        str_replace(
+            "qj5iqxj88bq",
+            ",",
+            str_replace(
+                "qj7iqxj55bq",
+                '"',
+                str_replace(
+                    "qj5iqxj77bq",
+                    "'",
+                    str_replace(
+                        "qj1iqaxj44bq",
+                        "A",
+                        str_replace(
+                            "qj1iqbxj44bq",
+                            "B",
+                            str_replace(
+                                "qj1iqcxj44bq",
+                                "C",
+                                str_replace(
+                                    "qj1iqdxj44bq",
+                                    "D",
+                                    str_replace(
+                                        "qj1iqexj44bq",
+                                        "E",
+                                        str_replace(
+                                            "qj1iqfxj44bq",
+                                            "F",
+                                            str_replace(
+                                                "qj1iqgxj44bq",
+                                                "G",
+                                                str_replace(
+                                                    "qj1iqhxj44bq",
+                                                    "H",
+                                                    str_replace(
+                                                        "qj1iqixj44bq",
+                                                        "I",
+                                                        str_replace(
+                                                            "qj1iqjxj44bq",
+                                                            "J",
+                                                            str_replace(
+                                                                "qj1iqkxj44bq",
+                                                                "K",
+                                                                str_replace(
+                                                                    "qj1iqlxj44bq",
+                                                                    "L",
+                                                                    str_replace(
+                                                                        "qj1iqmxj44bq",
+                                                                        "M",
+                                                                        str_replace(
+                                                                            "qj1iqnxj44bq",
+                                                                            "N",
+                                                                            str_replace(
+                                                                                "qj1iqoxj44bq",
+                                                                                "O",
+                                                                                str_replace(
+                                                                                    "qj1iqpxj44bq",
+                                                                                    "P",
+                                                                                    str_replace(
+                                                                                        "qj1iqqxj44bq",
+                                                                                        "Q",
+                                                                                        str_replace(
+                                                                                            "qj1iqrxj44bq",
+                                                                                            "R",
+                                                                                            str_replace(
+                                                                                                "qj1iqsxj44bq",
+                                                                                                "S",
+                                                                                                str_replace(
+                                                                                                    "qj1iqtxj44bq",
+                                                                                                    "T",
+                                                                                                    str_replace(
+                                                                                                        "qj1iquxj44bq",
+                                                                                                        "U",
+                                                                                                        str_replace(
+                                                                                                            "qj1iqvxj44bq",
+                                                                                                            "V",
+                                                                                                            str_replace(
+                                                                                                                "qj1iqwxj44bq",
+                                                                                                                "W",
+                                                                                                                str_replace(
+                                                                                                                    "qj1iqxxj44bq",
+                                                                                                                    "X",
+                                                                                                                    str_replace(
+                                                                                                                        "qj1iqyxj44bq",
+                                                                                                                        "Y",
+                                                                                                                        str_replace(
+                                                                                                                            "qj1iqzxj44bq",
+                                                                                                                            "Z",
+                                                                                                                            msg
+                                                                                                                        )
+                                                                                                                    )
+                                                                                                                )
+                                                                                                            )
+                                                                                                        )
+                                                                                                    )
+                                                                                                )
+                                                                                            )
+                                                                                        )
+                                                                                    )
+                                                                                )
+                                                                            )
+                                                                        )
+                                                                    )
+                                                                )
+                                                            )
+                                                        )
+                                                    )
+                                                )
+                                            )
+                                        )
+                                    )
+                                )
+                            )
+                        )
+                    )
+                )
+            )
+        )
+    );
+}
+function enqry(msg) {
+    return str_replace(
+        ":",
+        "qj7iqxj44bq",
+        str_replace(
+            ",",
+            "qj5iqxj88bq",
+            str_replace(
+                '"',
+                "qj7iqxj55bq",
+                str_replace(
+                    "'",
+                    "qj5iqxj77bq",
+                    str_replace(
+                        "A",
+                        "qj1iqaxj44bq",
+                        str_replace(
+                            "B",
+                            "qj1iqbxj44bq",
+                            str_replace(
+                                "C",
+                                "qj1iqcxj44bq",
+                                str_replace(
+                                    "D",
+                                    "qj1iqdxj44bq",
+                                    str_replace(
+                                        "E",
+                                        "qj1iqexj44bq",
+                                        str_replace(
+                                            "F",
+                                            "qj1iqfxj44bq",
+                                            str_replace(
+                                                "G",
+                                                "qj1iqgxj44bq",
+                                                str_replace(
+                                                    "H",
+                                                    "qj1iqhxj44bq",
+                                                    str_replace(
+                                                        "I",
+                                                        "qj1iqixj44bq",
+                                                        str_replace(
+                                                            "J",
+                                                            "qj1iqjxj44bq",
+                                                            str_replace(
+                                                                "K",
+                                                                "qj1iqkxj44bq",
+                                                                str_replace(
+                                                                    "L",
+                                                                    "qj1iqlxj44bq",
+                                                                    str_replace(
+                                                                        "M",
+                                                                        "qj1iqmxj44bq",
+                                                                        str_replace(
+                                                                            "N",
+                                                                            "qj1iqnxj44bq",
+                                                                            str_replace(
+                                                                                "O",
+                                                                                "qj1iqoxj44bq",
+                                                                                str_replace(
+                                                                                    "P",
+                                                                                    "qj1iqpxj44bq",
+                                                                                    str_replace(
+                                                                                        "Q",
+                                                                                        "qj1iqqxj44bq",
+                                                                                        str_replace(
+                                                                                            "R",
+                                                                                            "qj1iqrxj44bq",
+                                                                                            str_replace(
+                                                                                                "S",
+                                                                                                "qj1iqsxj44bq",
+                                                                                                str_replace(
+                                                                                                    "T",
+                                                                                                    "qj1iqtxj44bq",
+                                                                                                    str_replace(
+                                                                                                        "U",
+                                                                                                        "qj1iquxj44bq",
+                                                                                                        str_replace(
+                                                                                                            "V",
+                                                                                                            "qj1iqvxj44bq",
+                                                                                                            str_replace(
+                                                                                                                "W",
+                                                                                                                "qj1iqwxj44bq",
+                                                                                                                str_replace(
+                                                                                                                    "X",
+                                                                                                                    "qj1iqxxj44bq",
+                                                                                                                    str_replace(
+                                                                                                                        "Y",
+                                                                                                                        "qj1iqyxj44bq",
+                                                                                                                        str_replace(
+                                                                                                                            "Z",
+                                                                                                                            "qj1iqzxj44bq",
+                                                                                                                            msg
+                                                                                                                        )
+                                                                                                                    )
+                                                                                                                )
+                                                                                                            )
+                                                                                                        )
+                                                                                                    )
+                                                                                                )
+                                                                                            )
+                                                                                        )
+                                                                                    )
+                                                                                )
+                                                                            )
+                                                                        )
+                                                                    )
+                                                                )
+                                                            )
+                                                        )
+                                                    )
+                                                )
+                                            )
+                                        )
+                                    )
+                                )
+                            )
+                        )
+                    )
+                )
+            )
+        )
+    );
+}
+function enqry_lite(msg) {
+    return str_replace(
+        ":",
+        "qj7iqxj44bq",
+        str_replace(
+            ",",
+            "qj5iqxj88bq",
+            str_replace(
+                '"',
+                "qj7iqxj55bq",
+                str_replace("'", "qj5iqxj77bq", msg)
+            )
+        )
+    );
+}
+function enreplace(msg) {
+    return "qj1iq" + ord(msg) + "xj44bq";
+}
+function dereplace(msg) {
+    return chr(parseInt(explode("xj44b", explode("j1iq", msg)[1])[0]));
+}
+function enasciireplace(msg) {
+    return "qj1iq" + msg + "xj44bq";
+}
+function deasciireplace(msg) {
+    return explode("xj44b", explode("j1iq", msg)[1])[0];
+}
+
+</script>
+<script>
+    /***********rating starts code starts***********/
+    function create_rating_stars(id, position = "c", size = "15px", rating) {
+        if (rating == undefined) rating = "";
+        rating = rating.toString();
+        if (rating == "5") {
+            var ind5 = "checked";
+            var ind4 = "";
+            var ind3 = "";
+            var ind2 = "";
+            var ind1 = "";
+        } else if (rating == "4") {
+            var ind4 = "checked";
+            var ind5 = "";
+            var ind3 = "";
+            var ind2 = "";
+            var ind1 = "";
+        } else if (rating == "3") {
+            var ind3 = "checked";
+            var ind5 = "";
+            var ind4 = "";
+            var ind2 = "";
+            var ind1 = "";
+        } else if (rating == "2") {
+            var ind2 = "checked";
+            var ind5 = "";
+            var ind3 = "";
+            var ind4 = "";
+            var ind1 = "";
+        } else if (rating == "1") {
+            var ind1 = "checked";
+            var ind5 = "";
+            var ind3 = "";
+            var ind2 = "";
+            var ind4 = "";
+        } else {
+            var ind4 = "";
+            var ind5 = "";
+            var ind3 = "";
+            var ind2 = "";
+            var ind1 = "";
+        }
+        //id="staredrates"+(id.toString());
+        id = id.toString();
+        if (size == "") size = "15px";
+        size = "font-size:" + size + ";";
+        if (position == "c" || position == "")
+            pos = "display: flex;justify-content: center;";
+        else if (position == "l")
+            pos = "display: flex;justify-content: flex-start;";
+        else if (position == "r")
+            pos = "display: flex;justify-content: flex-end;";
+        else pos = position;
+
+        echo(
+            "<input type='hidden' id='ratingstars_" +
+            id +
+            "' name='ratingstars_" +
+            id +
+            '\' value="0"/><div class="tonytest" style=\'' +
+            pos +
+            "'><div class=\"rate\" id='" +
+            id +
+            "' style='" +
+            size +
+            "'><input id=\"stratingstars_" +
+            id +
+            'ar5" name="' +
+            "stratingstars_" +
+            id +
+            'ar5" type="radio" style="display:none;" class="radio-btn hide" ' +
+            ind5 +
+            '/><label for="' +
+            "stratingstars_" +
+            id +
+            'ar5" style="font-size:200%;" onclick=\'ratingstars_value_set("ratingstars_' +
+            id +
+            '","5");on_ratingstars_click("' +
+            id +
+            '","5")\'>&star;</label>&nbsp;<input id="' +
+            "stratingstars_" +
+            id +
+            'ar4" name="' +
+            "stratingstars_" +
+            id +
+            'ar4" type="radio" style="display:none;" class="radio-btn hide" ' +
+            ind4 +
+            '/><label for="' +
+            "stratingstars_" +
+            id +
+            'ar4" style="font-size:200%;" onclick=\'ratingstars_value_set("ratingstars_' +
+            id +
+            '","4");on_ratingstars_click("' +
+            id +
+            '","4")\'>&star;</label>&nbsp;<input  id="' +
+            "stratingstars_" +
+            id +
+            'ar3" name="' +
+            "stratingstars_" +
+            id +
+            'ar3" type="radio" style="display:none;" class="radio-btn hide" ' +
+            ind3 +
+            '/> <label for="' +
+            "stratingstars_" +
+            id +
+            'ar3" style="font-size:200%;" onclick=\'ratingstars_value_set("ratingstars_' +
+            id +
+            '","3");on_ratingstars_click("' +
+            id +
+            '","3")\'>&star;</label>&nbsp;<input  id="' +
+            "stratingstars_" +
+            id +
+            'ar2" name="' +
+            "stratingstars_" +
+            id +
+            'ar2" type="radio" style="display:none;" class="radio-btn hide" ' +
+            ind2 +
+            '/><label for="' +
+            "stratingstars_" +
+            id +
+            'ar2" style="font-size:200%;" onclick=\'ratingstars_value_set("ratingstars_' +
+            id +
+            '","2");on_ratingstars_click("' +
+            id +
+            '","2")\'>&star;</label>&nbsp;<input  id="' +
+            "stratingstars_" +
+            id +
+            'ar1" name="' +
+            "stratingstars_" +
+            id +
+            'ar1" type="radio"  style="display:none;" class="radio-btn hide" ' +
+            ind1 +
+            '/><label for="' +
+            "stratingstars_" +
+            id +
+            'ar1" style="font-size:200%;"  onclick=\'ratingstars_value_set("ratingstars_' +
+            id +
+            '","1");on_ratingstars_click("' +
+            id +
+            '","1")\'>&star;</label></div></div>'
+        );
+    }
+
+    function create_rating_starsr(id, position, size = "15px", rating) {
+        if (rating == undefined) rating = "";
+        rating = rating.toString();
+        if (rating == "5") {
+            var ind5 = "checked";
+            var ind4 = "";
+            var ind3 = "";
+            var ind2 = "";
+            var ind1 = "";
+        } else if (rating == "4") {
+            var ind4 = "checked";
+            var ind5 = "";
+            var ind3 = "";
+            var ind2 = "";
+            var ind1 = "";
+        } else if (rating == "3") {
+            var ind3 = "checked";
+            var ind5 = "";
+            var ind4 = "";
+            var ind2 = "";
+            var ind1 = "";
+        } else if (rating == "2") {
+            var ind2 = "checked";
+            var ind5 = "";
+            var ind3 = "";
+            var ind4 = "";
+            var ind1 = "";
+        } else if (rating == "1") {
+            var ind1 = "checked";
+            var ind5 = "";
+            var ind3 = "";
+            var ind2 = "";
+            var ind4 = "";
+        } else {
+            var ind4 = "";
+            var ind5 = "";
+            var ind3 = "";
+            var ind2 = "";
+            var ind1 = "";
+        }
+        //id="staredrates"+(id.toString());
+        id = id.toString();
+        if (size == "") size = "15px";
+        size = "font-size:" + size + ";";
+        if (position == "c" || position == "")
+            pos = "display: flex;justify-content: center;";
+        else if (position == "l")
+            pos = "display: flex;justify-content: flex-start;";
+        else if (position == "r")
+            pos = "display: flex;justify-content: flex-end;";
+        else pos = position;
+
+        return (
+            "<input type='hidden' id='ratingstars_" +
+            id +
+            "' name='ratingstars_" +
+            id +
+            '\' value="0"/><div class="tonytest" style=\'' +
+            pos +
+            "'><div class=\"rate\" id='" +
+            id +
+            "' style='" +
+            size +
+            "'><input id=\"stratingstars_" +
+            id +
+            'ar5" name="' +
+            "stratingstars_" +
+            id +
+            'ar5" type="radio" style="display:none;" class="radio-btn hide" ' +
+            ind5 +
+            '/><label for="' +
+            "stratingstars_" +
+            id +
+            'ar5" style="font-size:200%;" onclick=\'ratingstars_value_set("ratingstars_' +
+            id +
+            '","5");on_ratingstars_click("' +
+            id +
+            '","5")\'>&star;</label><input id="' +
+            "stratingstars_" +
+            id +
+            'ar4" name="' +
+            "stratingstars_" +
+            id +
+            'ar4" type="radio" style="display:none;" class="radio-btn hide" ' +
+            ind4 +
+            '/><label for="' +
+            "stratingstars_" +
+            id +
+            'ar4" style="font-size:200%;" onclick=\'ratingstars_value_set("ratingstars_' +
+            id +
+            '","4");on_ratingstars_click("' +
+            id +
+            '","4")\'>&star;</label><input  id="' +
+            "stratingstars_" +
+            id +
+            'ar3" name="' +
+            "stratingstars_" +
+            id +
+            'ar3" type="radio" style="display:none;" class="radio-btn hide" ' +
+            ind3 +
+            '/> <label for="' +
+            "stratingstars_" +
+            id +
+            'ar3" style="font-size:200%;" onclick=\'ratingstars_value_set("ratingstars_' +
+            id +
+            '","3");on_ratingstars_click("' +
+            id +
+            '","3")\'>&star;</label><input  id="' +
+            "stratingstars_" +
+            id +
+            'ar2" name="' +
+            "stratingstars_" +
+            id +
+            'ar2" type="radio" style="display:none;" class="radio-btn hide"  ' +
+            ind2 +
+            '/><label for="' +
+            "stratingstars_" +
+            id +
+            'ar2" style="font-size:200%;" onclick=\'ratingstars_value_set("ratingstars_' +
+            id +
+            '","2");on_ratingstars_click("' +
+            id +
+            '","2")\'>&star;</label><input  id="' +
+            "stratingstars_" +
+            id +
+            'ar1" name="' +
+            "stratingstars_" +
+            id +
+            'ar1" type="radio"  style="display:none;" class="radio-btn hide" ' +
+            ind1 +
+            '/><label for="' +
+            "stratingstars_" +
+            id +
+            'ar1" style="font-size:200%;"  onclick=\'ratingstars_value_set("ratingstars_' +
+            id +
+            '","1");on_ratingstars_click("' +
+            id +
+            '","1")\'>&star;</label></div></div>'
+        );
+    }
+
+    function display_rating(rating, size = "") {
+        rating = Math.floor(parseInt(rating) * 2) / 2;
+        rating = rating.toString();
+        rating = str_replace(".5", "h", rating);
+        //~regex
+        size = size.replace(/%/g, size.replace(/px/g, size.toLowerCase()));
+        //~~regex
+        size = size.toString();
+        if (size == "") size = "height='25%' width='25%'";
+        else if (size.includes(",")) {
+            var siz = explode(",", size);
+            size = "height='" + siz[0] + "%' width='" + siz[1] + "%'";
+        } else {
+            /*var window_width = window.innerWidth; 
+  var window_height = window.innerHeight;
+  var x=window_height/window_width;
+  width=(size)/x;*/
+            width = (1280 * size) / 263;
+            size = "height='" + size + "%'  width='" + parseInt(width) + "%'";
+        }
+        echo(
+            "<img " + size + " src='" + gphotos + "/stars/" + rating + ".png'/>"
+        );
+    }
+
+    function display_ratingr(rating, size = "") {
+        size = size.toString();
+        //~regex
+        size = size.replace(/%/g, size.replace(/px/g, size.toLowerCase()));
+        //~~regex
+        rating = Math.floor(parseInt(rating) * 2) / 2;
+        rating = rating.toString();
+        rating = str_replace(".5", "h", rating);
+        if (size == "") size = "height='25%' width='25%'";
+        else if (size.includes(",")) {
+            var siz = explode(",", size);
+            size = "height='" + siz[0] + "' width='" + siz[1] + "'";
+        } else {
+            /*var window_width = window.innerWidth; 
+  var window_height = window.innerHeight;
+  var x=window_height/window_width;
+  width=(size)/x;*/
+            width = (1280 * size) / 263;
+            size = "height='" + size + "%'  width='" + parseInt(width) + "%'";
+        }
+
+        return (
+            "<img " + size + " src='" + gphotos + "/stars/" + rating + ".png'/>"
+        );
+    }
+    /***********rating starts code ends***********/
+</script><script>
+    function rud(out) {
+        return out;
+    }
+</script><script>
+    var loadingHeights = {};
+    var loadingIH = {};
+
+    function loading(targetdiv) {
+        if (!targetdiv) return;
+
+        const targetDiv = document.getElementById(targetdiv);
+        if (!targetDiv) return;
+
+        targetDiv.style.position = 'relative';
+
+        loadingIH[targetdiv] = targetDiv.innerHTML;
+        loadingHeights[targetdiv] = targetDiv.offsetHeight;
+        if (targetDiv.offsetHeight < 300) {
+            targetDiv.style.height = "300px";
+        }
+
+        // Check if loader already exists inside
+        if (targetDiv.querySelector('.custom-loader-container')) {
+            return;
+        }
+
+        const loaderContainer = document.createElement('div');
+        loaderContainer.className = 'custom-loader-container';
+        loaderContainer.style.position = 'absolute';
+        loaderContainer.style.top = '0';
+        loaderContainer.style.left = '0';
+        loaderContainer.style.width = '100%';
+        loaderContainer.style.height = '100%';
+        loaderContainer.style.display = 'flex';
+        loaderContainer.style.flexDirection = 'column'; // Align elements vertically
+        loaderContainer.style.alignItems = 'center';
+        loaderContainer.style.justifyContent = 'center';
+        loaderContainer.style.borderRadius = '10px';
+        loaderContainer.style.background = 'rgba(0, 0, 0, 0.5)';
+        loaderContainer.style.zIndex = '9999';
+
+        loaderContainer.innerHTML = `
+        <div class="loader9996">
+            <div class="inner one"></div>
+            <div class="inner two"></div>
+            <div class="inner three"></div>
+            <div class="progressno">Processing</div>
+        </div>`;
+
+        // Add CSS for loader animation
+        if (!document.getElementById('loader9996-style')) {
+            const loaderCSS = `
+        <style id="loader9996-style">
+        @media(orientation: landscape), (orientation: portrait) {
+            .progressno {
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+                font-family: Verdana;
+                font-weight: 400;
+                font-size: 0.8rem;
+                text-align: center;
+                background: linear-gradient(90deg,rgb(95, 183, 246),rgb(136, 190, 251),rgb(104, 132, 241)); /* Gold gradient */
+                -webkit-background-clip: text; /* Apply gradient to text */
+                color: transparent;
+            }
+            .loader9996 {
+                width: 140px;
+                height: 140px;
+                position: relative;
+                border-radius: 50%;
+                perspective: 800px;
+            }
+            .inner {
+                position: absolute;
+                box-sizing: border-box;
+                width: 100%;
+                height: 100%;
+                border-radius: 50%;
+            }
+            .inner.one {
+                left: 0%;
+                top: 0%;
+                animation: rotate-one 1s linear infinite;
+                border-bottom: 6px solid #f98700;
+            }
+            .inner.two {
+                right: 0%;
+                top: 0%;
+                animation: rotate-two 1s linear infinite;
+                border-right: 6px solid #e7e9ea;
+            }
+            .inner.three {
+                right: 0%;
+                bottom: 0%;
+                animation: rotate-three 1s linear infinite;
+                border-top: 6px solid #1dfe08;
+            }
+            @keyframes rotate-one {
+                0% { transform: rotateX(35deg) rotateY(-45deg) rotateZ(0deg); }
+                100% { transform: rotateX(35deg) rotateY(-45deg) rotateZ(360deg); }
+            }
+            @keyframes rotate-two {
+                0% { transform: rotateX(50deg) rotateY(10deg) rotateZ(0deg); }
+                100% { transform: rotateX(50deg) rotateY(10deg) rotateZ(360deg); }
+            }
+            @keyframes rotate-three {
+                0% { transform: rotateX(35deg) rotateY(55deg) rotateZ(0deg); }
+                100% { transform: rotateX(35deg) rotateY(55deg) rotateZ(360deg); }
+            }
+        }
+        </style>`;
+            document.head.insertAdjacentHTML('beforeend', loaderCSS);
+        }
+
+        targetDiv.appendChild(loaderContainer);
+    }
+
+    function removeLoading(targetdiv) {
+
+        if (!targetdiv) return;
+
+        const targetDiv = document.getElementById(targetdiv);
+
+
+        if (!targetDiv) return;
+
+        const loader = targetDiv.querySelector('.custom-loader-container');
+        if (loader) {
+            loader.remove();
+        }
+        targetDiv.style.height = loadingHeights[targetdiv];
+        // setTimeout(() => loadingreset(targetdiv), 10);
+    }
+
+    function loadingreset(targetdiv) {
+        const targetDiv = document.getElementById(targetdiv);
+        targetDiv.innerHTML = loadingIH[targetdiv];
+    }
+</script>
+<script>
+function create_image_uploader(
+    id = "",
+    min = "",
+    max = "",
+    width = "",
+    height = "",
+    server = "own",
+    sensitive = "no",
+    path = "",
+    preview = "yes",
+    cropshape = "square",
+    uploadicon = "",
+    text = "",
+    buttontext = "",
+    iconstyle = ""
+) {
+    return create_image_uploaderr(
+        id,
+        min,
+        max,
+        width,
+        height,
+        server,
+        sensitive,
+        path,
+        preview,
+        cropshape,
+        uploadicon,
+        text,
+        buttontext,
+        iconstyle
+    );
+}
+function create_image_uploaderr(
+    id = "",
+    min = "",
+    max = "",
+    width = "",
+    height = "",
+    server = "own",
+    sensitive = "no",
+    path = "",
+    preview = "yes",
+    cropshape = "square",
+    uploadicon = "",
+    text = "",
+    buttontext = "",
+    iconstyle = ""
+) {
+    return "In 2 weeks you will see a 🖼️ button here, to upload pictures !";
+}
+
+</script><style>
+    .breadcrumb {
+        /*centering*/
+        display: flex;
+        box-shadow: 5px 5px 10px rgba(43, 41, 37, 0.5);
+        /* overflow: hidden; */
+        border-radius: 5px;
+        /*Lets add the numbers for each link using CSS counters. flag is the name of the counter. to be defined using counter-reset in the parent element of the links*/
+        counter-reset: flag;
+        height: 35px;
+        text-align: left;
+        overflow-x: auto;
+        scrollbar-width: none;
+        white-space: nowrap;
+        -ms-overflow-style: none;
+        overflow-y: hidden;
+        /* NO vertical scroll */
+
+        scrollbar-width: none;
+        /* hide scrollbar on Firefox */
+        /* hide scrollbar on IE10+ */
+    }
+
+    .breadcrumb::-webkit-scrollbar {
+        display: none;
+    }
+
+    .breadcrumb a {
+        text-decoration: none;
+        outline: none;
+        display: block;
+        float: left;
+        font-size: 15px;
+        line-height: 36px;
+        color: rgb(88, 84, 84);
+        /*need more margin on the left of links to accomodate the numbers*/
+        /* padding: 0 10px 0 60px; */
+        padding-left: 46px;
+        padding-right: 27px;
+        background: #ecc514;
+        background: linear-gradient(rgb(240, 215, 53), rgb(209, 164, 38));
+        position: relative;
+    }
+
+    /*since the first link does not have a triangle before it we can reduce the left padding to make it look consistent with other links*/
+    .breadcrumb a:first-child {
+        padding-left: 46px;
+        padding-right: 27px;
+        border-radius: 5px 0 0 5px;
+        /*to match with the parent's radius*/
+    }
+
+    .breadcrumb a:first-child:before {
+        left: 14px;
+    }
+
+    .breadcrumb a:last-child {
+        border-radius: 0 5px 5px 0;
+        flex-grow: 1;
+        width: 100%;
+    }
+
+    /*hover/active styles*/
+    .breadcrumb a.active,
+    .breadcrumb a:hover {
+        background: #333;
+        background: linear-gradient(rgb(234, 198, 101), rgb(233, 202, 122));
+    }
+
+    .breadcrumb a.active:after,
+    .breadcrumb a:hover:after {
+        background: #333;
+        background: linear-gradient(135deg, rgb(234, 198, 101), rgb(233, 202, 122));
+    }
+
+    /*adding the arrows for the breadcrumbs using rotated pseudo elements*/
+    .breadcrumb a:after {
+        content: "";
+        position: absolute;
+        top: 0;
+        right: -18px;
+        /*half of square's length*/
+        /*same dimension as the line-height of .breadcrumb a */
+        width: 36px;
+        height: 36px;
+        /*as you see the rotated square takes a larger height. which makes it tough to position it properly. So we are going to scale it down so that the diagonals become equal to the line-height of the link. We scale it to 70.7% because if square's: 
+	length = 1; diagonal = (1^2 + 1^2)^0.5 = 1.414 (pythagoras theorem)
+	if diagonal required = 1; length = 1/1.414 = 0.707*/
+        transform: scale(0.707) rotate(45deg);
+        /*we need to prevent the arrows from getting buried under the next link*/
+        z-index: 1;
+        /*background same as links but the gradient will be rotated to compensate with the transform applied*/
+        background: #666;
+        background: linear-gradient(135deg, rgb(240, 215, 53), rgb(209, 164, 38));
+        /*stylish arrow design using box shadow*/
+        box-shadow: 2px -2px 0 2px rgba(0, 0, 0, 0.4),
+            3px -3px 0 2px rgba(255, 255, 255, 0.1);
+        /*
+		5px - for rounded arrows and 
+		50px - to prevent hover glitches on the border created using shadows*/
+        border-radius: 0 5px 0 50px;
+    }
+
+    /*we dont need an arrow after the last link*/
+    .breadcrumb a:last-child:after {
+        content: none;
+    }
+
+    /*we will use the :before element to show numbers*/
+    .breadcrumb a:before {
+        /*some styles now*/
+        border-radius: 100%;
+        width: 20px;
+        height: 20px;
+        line-height: 20px;
+        margin: 8px 0;
+        position: absolute;
+        top: 0;
+        left: 30px;
+        background: #444;
+        background: linear-gradient(rgb(240, 215, 53), rgb(209, 164, 38));
+        font-weight: bold;
+    }
+</style><form id="raghulsneuralengine">
+    <div id="notconnected">
+
+    </div>
+    
+    <div id="loading" style="position: absolute; margin-left: auto; margin-right: auto; left: 0; top: 0; width: 100%; height: 100%;">
+        <center>
+            <div>
+                <div class="loader9996">
+                    <div class="inner one"></div>
+                    <div class="inner two"></div>
+                    <div class="inner three"></div>
+                </div>
+                <div class="progressno">Processing</div>
+            </div>
+        </center>
+    </div>
+
+    <style>
+    @media(orientation: landscape), (orientation: portrait) {
+        .progressno {
+            font-family: Verdana;
+            font-weight: 400;
+            line-height: 2;
+            font-size: 1rem;
+            position: absolute;
+            top: calc(50%);
+            left: calc(50%);
+            transform: translate(-50%, -50%);
+        }
+        .loader9996 {
+            position: absolute;
+            top: calc(50%);
+            left: calc(50%);
+            width: 200px;
+            height: 200px;
+            transform: translate(-50%, -50%);
+            border-radius: 50%;
+            perspective: 800px;
+        }
+        .inner {
+            position: absolute;
+            box-sizing: border-box;
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+        }
+        .inner.one {
+            left: 0%;
+            top: 0%;
+            animation: rotate-one 1s linear infinite;
+            border-bottom: 5px solid #f98700;
+        }
+        .inner.two {
+            right: 0%;
+            top: 0%;
+            animation: rotate-two 1s linear infinite;
+            border-right: 5px solid #e7e9ea;
+        }
+        .inner.three {
+            right: 0%;
+            bottom: 0%;
+            animation: rotate-three 1s linear infinite;
+            border-top: 5px solid #1dfe08;
+        }
+        @keyframes rotate-one {
+            0% { transform: rotateX(35deg) rotateY(-45deg) rotateZ(0deg); }
+            100% { transform: rotateX(35deg) rotateY(-45deg) rotateZ(360deg); }
+        }
+        @keyframes rotate-two {
+            0% { transform: rotateX(50deg) rotateY(10deg) rotateZ(0deg); }
+            100% { transform: rotateX(50deg) rotateY(10deg) rotateZ(360deg); }
+        }
+        @keyframes rotate-three {
+            0% { transform: rotateX(35deg) rotateY(55deg) rotateZ(0deg); }
+            100% { transform: rotateX(35deg) rotateY(55deg) rotateZ(360deg); }
+        }
+    }
+    </style>    </div>
+    <div id="container" style="display:none;">
+        <!-- <br><br><br><br><br><br><br><br><br> -->
+        <div class="login-container" id='signinwith'>
+            <!-- Bee Logo -->
+            <div class="bee-logo">
+                <img src="https://www.rdcollege.in/skynetbee/skynet-framework/icons/skynetbeepng.png" alt="Bee Logo" class="darkmode-ignore" draggable="false" style="filter: invert(0);">
+            </div>
+
+            <!-- Horizontal line for mobile -->
+            <div class="horizontal-line"></div>
+
+            <!-- Vertical line for mobile and desktop -->
+            <div class="divider"></div>
+
+            <!-- Login Information (Google & Apple icons) -->
+            <div class="login-info">
+                <h2>System Security</h2>
+                <p>Login to your account</p>
+                <div class="login-icons">
+                    <button class="google-login" type="button" onclick="window.location.href='https://accounts.google.com/o/oauth2/v2/auth?response_type=code&access_type=online&client_id=394330305046-lt4fmp961kg4bf9di3lobc4kuc68bv41.apps.googleusercontent.com&redirect_uri=https%3A%2F%2Fwww.rdcollege.in%2Fskynetbee%2F%3Ffingerprint%3Dsign-in&state&scope=email%20profile&approval_prompt=auto'">
+                        <img class="google-logo-img" src='https://www.rdcollege.in/skynetbee/skynet-framework/icons/googlelogopng.png' alt='Google' />
+
+                    </button>
+                    <button class="apple-login" type="button" onclick="window.location.href='/access-denied'">
+                        <img src="https://www.rdcollege.in/skynetbee/skynet-framework/icons/applelogopng.png" class="apple-logo-img" alt="Apple">
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    </div></form>
+    <script>
+        function main() {
+            var device_type = getDeviceType();
+            var device_brand = getDeviceBrand();
+            var device_model = getDeviceModel();
+            var device_os = getDeviceOS();
+            var device_browser = getDeviceBrowser();
+            //alert(device_type + device_brand + device_model + device_os + device_browser);
+            var code = getUrlParameter("code");
+            if (code == undefined) {
+                code = "";
+            }
+            var scope = get("scope");
+            if (scope == undefined) {
+                scope = "";
+            }
+            var authuser = get("authuser");
+            if (authuser == undefined) {
+                authuser = "";
+            }
+            var prompt = get("prompt");
+            if (prompt == undefined) {
+                prompt = "";
+            }
+
+            if (code.length > 25) {
+                if (authuser != "") {
+                    cl();
+                    raghulway("248_root_signin", "code:<-:" + code + "|s,|device_type:<-:" + device_type + "|s,|device_brand:<-:" + device_brand + "|s,|device_model:<-:" + device_model + "|s,|device_os:<-:" + device_os + "|s,|device_browser:<-:" + device_browser);
+                    code = "";
+                    hide("container");
+                    removeUrlParams("code", "scope", "authuser", "prompt");
+                } else {
+                    raghulway("248_apple_signin", "code:<-:" + code + "|s,|applename:<-:" + getUrlParameter("applename"));
+                    code = "";
+                    hide("container");
+                    removeUrlParams("code", "state");
+                }
+            } else {
+                hide("loading");
+                document.getElementById("container").style.display = "";
+            }
+        }
+
+        function getUrlParameter(name) {
+            // Create a URL object from the current location
+            const url = new URL(window.location.href);
+
+            // Use the searchParams API to get the parameter value
+            return url.searchParams.get(name);
+        }
+
+        function removeUrlParams(...keys) {
+            // Get the current URL
+            const url = new URL(window.location.href);
+
+            // Remove the specified keys from the URL's search parameters
+            keys.forEach(key => {
+                url.searchParams.delete(key);
+            });
+
+            // Update the URL in the browser without refreshing the page
+            window.history.replaceState({}, '', url.toString());
+        }
+
+        function wl(msg) {
+            window.location = webfolders + "?fingerprint=" + msg;
+        }
+
+
+        function raghulway_248_apple_signin(msg) {
+            var data = msg.split("[s~1]");
+            if (data[0] == "nc") {
+                hide("signinwith");
+                $("#notconnected").append('<div style="font-family: Arial, sans-serif; color: #333; background-color: #f9f9f9; border: 2px solid #4CAF50; border-radius: 5px; padding: 20px; text-align: center; margin: 50px auto; width: 300px; box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);">Your account is not connected to any Member, so please call <a href="tel:+917373733020">Gayathri Mam +917373733020</a> and tell her your OTP: <strong>' + data[1] + '</strong></div>');
+                show("notconnected");
+                $(".nav-sign-off2").show();
+                $(".nav-sign-off1").hide();
+                show("container");
+                localStorage.setItem("mavirxhash", "signedin");
+            } else if (data[0] == "success") {
+                hide("notconnected");
+                hide("signinwith");
+                $(".nav-sign-off2").show();
+                $(".nav-sign-off1").hide();
+                localStorage.setItem("mavirxhash", "signedin");
+                localStorage.setItem("system_current_area", data[1]);
+                localStorage.setItem("system_current_macaddress", data[2]);
+                localStorage.setItem("system_current_site", data[3]);
+                localStorage.setItem("system_current_owncomcode", data[4]);
+                var redirect_to = localStorage.getItem("system_after_signin_redirect_to");
+                try {
+                    if (is_not_null(redirect_to)) {
+                        wl(redirect_to);
+                    } else {
+                        wl("homepage")
+                    }
+                } catch (error) {
+                    wl("homepage")
+                }
+            } else if (data[0] == "fail") {
+                wl("access-denied");
+            }
+        }
+
+        function raghulway_248_root_signin(msg) {
+            var data = msg.split("[s~1]");
+            if (data[0] == "nc") {
+                hide("loading");
+                $("#notconnected").append(`
+  <div style="font-family: Arial, sans-serif; padding: 20px; text-align: center; margin: auto; width: 480px; height: 100vh; display: flex; align-items: center; justify-content: center; position: relative;">
+    <div style="position: absolute; font-size: 700px; top: 50%; left: 50%; transform: translate(-50%, -50%); line-height: 1; ">☁️</div>
+    <div style="position: relative; z-index: 1; font-size: 25px; max-width: 90%; transform: translateY(-9%);">
+      <img src="` + icons + `bee.png"><br>
+      Your account is not connected to any Member, so please call 
+      <a href="tel:+917373733020">Gayathri Mam +917373733020</a> and tell her your OTP: 
+      <strong>` + data[1] + `</strong>
+    </div>
+  </div>
+`);
+                show("notconnected");
+            } else if (data[0] == "success") {
+                hide("notconnected");
+                var redirect_to = localStorage.getItem("system_after_signin_redirect_to");
+                try {
+                    if (is_not_null(redirect_to)) {
+                        localStorage.setItem("system_after_signin_redirect_to", "");
+                        wl(redirect_to);
+                    } else {
+                        wl("homepage")
+                    }
+                } catch (error) {
+                    wl("homepage")
+                }
+            } else if (data[1] == "fail") {
+                wl(websites + "access-denied");
+            }
+        }
+    </script>
+
+        <style>
+        * {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: linear-gradient(to bottom, #8ab9ff, #fff) !important;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .login-container {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 70vw;
+            height: calc(70vw/3);
+            background: #f9f9f9;
+            border-radius: 40px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, .1);
+            position: relative;
+            overflow: hidden;
+            transform: translateY(-10%);
+        }
+
+        .bee-logo {
+            flex: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100%;
+        }
+
+        .bee-logo img {
+            height: 60%;
+            width: auto;
+            object-fit: contain;
+        }
+
+        .divider {
+            width: 2px;
+            height: 70%;
+            background: #ccc;
+        }
+
+        .login-info {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100%;
+            padding: 20px;
+            line-height: 1.5;
+            text-align: center;
+        }
+
+        .login-info h2 {
+            font-size: 3.5em;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+
+        .login-info p {
+            font-size: 2.2em;
+            font-weight: bold;
+            margin-bottom: 30px;
+        }
+
+        .login-icons {
+            display: flex;
+            gap: 30px;
+        }
+
+        .login-info button {
+            height: 60px;
+            width: 60px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: #fff;
+            border: none;
+            border-radius: 15px;
+            box-shadow: 2px 2px 4px rgba(0, 0, 0, .15);
+            cursor: pointer;
+            transition: background .2s ease;
+        }
+
+        .login-info button:hover {
+            background: #dcdcdc;
+        }
+
+        .google-logo-img {
+            margin-top: 2px;
+            height: 80%;
+            width: 80%;
+            object-fit: contain;
+        }
+
+        .apple-logo-img {
+            height: 65%;
+            width: 65%;
+            object-fit: contain;
+        }
+
+        .horizontal-line {
+            display: none;
+            background: #ccc;
+            height: 2px;
+            width: 70%;
+            position: absolute;
+        }
+
+        @media(orientation:portrait) {
+            .login-container {
+                flex-direction: column;
+                width: 75vw;
+                height: calc(75vw*1.3);
+            }
+
+            .divider {
+                display: none;
+            }
+
+            .horizontal-line {
+                display: block;
+                top: 50%;
+                left: 15%;
+            }
+
+            .bee-logo,
+            .login-info {
+                flex: none;
+                width: 100%;
+                height: 50%;
+            }
+
+            .login-info button {
+                height: 100px;
+                width: 100px;
+                border-radius: 15px;
+                box-shadow: 2px 2px 6px rgba(0, 0, 0, .15);
+            }
+
+            .google-logo-img {
+                margin-top: 2px;
+                height: 80%;
+                width: 80%;
+            }
+
+            .apple-logo-img {
+                height: 65%;
+                width: 65%;
+            }
+        }
+
+        @media(orientation:landscape) and (min-width:800px) {
+
+            .login-info h2,
+            .login-info p {
+                font-weight: normal;
+            }
+        }
+    </style><script>localStorage.setItem('system_after_signin_redirect_to','homepage');include('linker.js');</script>

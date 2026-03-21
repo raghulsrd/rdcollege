@@ -1,0 +1,1407 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>RD National College of Arts and Science, Erode</title>
+
+  <style>
+        /* Reset styles */
+        * {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Segoe UI', sans-serif;
+  scroll-behavior: smooth;
+  overflow-x: hidden;
+}
+
+/* Header */
+header {
+  background-color: #060080;
+  color: white;
+  padding: 4px 10px; /* less padding = shorter height */
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px; /* reduce gap between elements */
+}
+
+
+/* Row Layout: Logo + College Name */
+.top-row {
+  display: flex;
+  align-items: center;
+  justify-content: center; /* center horizontally */
+  gap: 16px;
+}
+
+/* Logo */
+.logo {
+  width: 45px;
+  height: 45px; /* smaller size */
+  border-radius: 50%;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.logo img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+/* College Name */
+header h1 {
+  font-size: 18px; /* down from 22px */
+  font-weight: 500;
+  white-space: nowrap;
+}
+
+/* Header Styles */
+header {
+  background-color: #060080;
+  color: white;
+  padding: 12px 16px;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+}
+
+/* Logo + College Name Row */
+.top-row {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+}
+
+.logo {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.logo img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+header h1 {
+  font-size: 22px;
+  font-weight: 600;
+  color: white;
+  white-space: nowrap;
+  text-align: center;
+}
+
+/* Sections (Nav below logo+name, centered) */
+.sections {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}
+
+nav ul {
+  list-style: none;
+  display: flex;
+  justify-content: center;
+  gap: 24px;
+  padding: 0;
+  margin: 0;
+}
+
+nav ul li a {
+  color: white;
+  text-decoration: none;
+  padding: 8px 12px;
+  font-weight: 500;
+  transition: background 0.3s ease;
+}
+
+nav ul li a:hover {
+  background: rgba(255, 255, 255, 0.976);
+  border-radius: 4px;
+}
+/* Nav Buttons in Sections */
+.sections nav ul {
+  list-style: none;
+  display: flex;
+  justify-content: center;
+  gap: 16px;
+  padding: 0;
+  margin: 0;
+  color: black; /* ✅ Make text black */
+}
+
+.sections nav ul li a {
+  background-color: #fffffff1; /* light transparent white */
+  color: white;
+  text-decoration: none;
+  padding: 10px 18px;
+  font-weight: 500;
+  border: 1px solid white;
+  border-radius: 8px;
+  transition: background 0.3s, color 0.3s;
+}
+
+.sections nav ul li a:hover {
+  background-color: white;
+  color: #060080;
+  font-weight: 600;
+}
+/* Logo and Title Section */
+.header-top {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 80px;
+  background-color: #060080;
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  z-index: 1000;
+  padding: 10px;
+}
+
+/* Navigation Menu Section */
+.header-nav {
+  position: fixed;
+  top: 80px; /* Just below logo */
+  width: 100%;
+  background-color: white;
+  z-index: 999; /* Slightly less than header-top */
+  padding: 10px 0;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+}
+
+
+.header-nav ul {
+  list-style: none;
+  display: flex;
+  gap: 24px;
+  padding: 0;
+  margin: 0;
+}
+
+.header-nav ul li a {
+  color: white;
+  text-decoration: none;
+  font-weight: 500;
+  padding: 8px 12px;
+  border-radius: 6px;
+}
+
+.header-nav ul li a:hover {
+  background: white;
+  color: #060080;
+  transition: 0.3s;
+}
+
+/* Space below fixed bars */
+.page-content {
+  margin-top: 130px; /* 80 + 50 approx */
+  padding: 20px;
+}
+
+
+         /* Slideshow */
+  .slider {
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;
+    position: relative;
+  }
+  
+  .slides {
+    display: flex;
+    height: 100%;
+    transition: transform 0.5s ease-in-out;
+  }
+  
+  .slides img {
+    width: 100vw;
+    height: 100vh;
+    object-fit: cover;
+    flex: 0 0 100vw;
+  }
+
+  @media (max-width: 768px) {
+  .slider {
+    height: 90vh; /* 🔽 reduce height for smaller screens */
+  }
+
+  .slides img {
+    height: 60vh; /* 🔽 reduce height for smaller screens */
+    object-fit: cover;  /* ✅ show full image without cutting */
+  }
+  .slides img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* or try contain */
+  object-position: center;
+}
+
+}
+
+    
+        /* Nav */
+        nav ul {
+            list-style: none;
+            display: flex;
+            gap: 15px;
+            position: relative;
+        }
+    
+        nav ul li {
+            position: relative;
+        }
+    
+        nav a {
+            color: white;
+            text-decoration: none;
+            padding: 10px;
+            display: block;
+        }
+    
+        nav ul li:hover > ul {
+            display: block;
+        }
+    
+        /* Dropdown Menus */
+        nav ul ul {
+            display: none;
+            position: absolute;
+            background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
+                        url('https://www.transparenttextures.com/patterns/black-linen.png');
+            background-size: cover;
+            top: 100%;
+            left: 0;
+            min-width: 180px;
+            z-index: 999;
+            border-radius: 8px;
+            backdrop-filter: blur(4px);
+        }
+    
+        nav ul ul ul {
+            display: none;
+            position: absolute;
+            top: 0;
+            left: 100%;
+            background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
+                        url('https://www.transparenttextures.com/patterns/black-linen.png');
+            background-size: cover;
+            white-space: nowrap;
+            z-index: 999;
+            border-radius: 8px;
+            backdrop-filter: blur(4px);
+        }
+    
+        nav li:nth-child(3) ul li:first-child ul {
+            left: auto;
+            right: 100%;
+        }
+    
+        nav ul ul li:hover > ul {
+            display: block;
+        }
+    
+        nav ul ul li a {
+            padding: 10px;
+            color: white;
+        }
+
+  /* Mobile View - Mobile-first Styles */
+
+  .header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 20px;
+  background-color: #333;
+  color: white;
+  height: 60px;
+}
+/* Header Container */
+.mobile-header {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  padding: 10px 20px;
+  background-color: #003366;
+  position: relative;
+  z-index: 1100;
+}
+
+
+
+/* RIGHT SIDE MENU */
+#menuToggle {
+  display: none; /* hide by default */
+  background: none;
+  border: none;
+  font-size: 28px;
+  color: white;
+  cursor: pointer;
+  z-index: 1200;
+}
+
+@media (max-width: 768px) {
+  #menuToggle {
+    display: block;
+    position: absolute;
+    top: 15px;
+    right: -0px; /* increased from 20px */
+  }
+
+  nav ul {
+    display: none;
+    position: absolute;
+    top: 60px;
+    right: 0;
+    background-color: #003366;
+    width: 200px;
+    flex-direction: column;
+    padding: 10px 0;
+    border-radius: 10px;
+    z-index: 1100;
+  }
+
+  nav ul.show {
+    display: flex;
+  }
+}sted {
+  display: block;
+}
+/* Dropdown */
+.side-menu .dropdown-content {
+  display: none;
+  flex-direction: column;
+  padding-left: 15px;
+}
+#menu li > a {
+  padding: 10px 20px;
+  border-radius: 5px;
+  color: white;
+  text-decoration: none;
+  transition: box-shadow 0.3s ease, background-color 0.3s ease;
+  display: inline-block;
+}
+
+#menu li > a.active-glow {
+  background-color: #003366 !important;
+  box-shadow: 0 0 12px 4px #003366;
+}
+
+/* Base nested submenu: open to left (desktop) */
+ul.submenu ul.submenu-nested {
+  position: absolute;
+  top: 0;
+  right: 100%;  /* opens to the left */
+  left: auto;
+  background: #fff; /* example background */
+  color: #000;
+  min-width: 200px;
+  display: none;
+}
+/* Glowing style for active menu items */
+#menu a.active,
+#menu a:hover {
+  background-color: #003366;
+  color: white;
+  border: 2px solid gold;
+  border-radius: 8px;
+  box-shadow:
+    0 0 10px gold,
+    0 0 15px gold,
+    0 0 20px gold,
+    0 0 25px gold;
+  transition: box-shadow 0.3s ease-in-out, background-color 0.3s ease-in-out;
+}
+
+
+/* Show submenu on hover - desktop */
+ul.submenu li:hover > ul.submenu-ne
+
+.side-menu .dropdown.open > .dropdown-content {
+  display: flex;
+}
+
+/* Overlay */
+#overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0,0,0,0.4);
+  z-index: 1000;
+  display: none;
+}
+#overlay.active {
+  display: block;
+}
+@media (max-width: 768px) {
+  header {
+    padding: 8px 10px;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start; /* Remove big space */
+  }
+
+  .left {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    flex: 1; /* Pushes menu icon to end */
+    min-width: 0; /* Prevent overflow */
+  }
+
+  header h1 {
+  font-size: 14px;
+  font-weight: 500;
+  text-align: center;
+  flex: 1;
+  margin-left: 10px;
+  white-space: normal;     /* Allow wrapping */
+  overflow: visible;       /* Don't cut text */
+  text-overflow: unset;    /* Remove ellipsis (…) */
+}
+
+
+  #menuToggle {
+    display: block;
+    font-size: 24px;
+    background: none;
+    border: none;
+    color: white;
+    cursor: pointer;
+  }
+}
+
+/* For small mobile screens */
+@media (max-width: 480px) {
+  nav ul li a {
+    font-size: 16px;  /* Adjust the font size for smaller devices */
+  }
+}
+/* Mobile: submenu nested open to right */
+@media screen and (max-width: 640px) {
+  ul.submenu ul.submenu-nested {
+    right: auto !important;
+    left: 100% !important; /* open to right */
+  }
+}  
+ /* Glow Animation */
+        .glow {
+            animation: glowEffect 1.5s ease-in-out;
+            box-shadow: 0 0 20px 8px #ffd700;
+            border-radius: 12px;
+        }
+    
+        @keyframes glowEffect {
+            0% { box-shadow: 0 0 0 rgba(255, 215, 0, 0); }
+            50% { box-shadow: 0 0 20px 8px rgba(255, 215, 0, 0.8); }
+            100% { box-shadow: 0 0 0 rgba(255, 215, 0, 0); }
+        }
+    
+        /* Section Styling */
+        section {
+            padding: 40px 20px;
+            max-width: 1200px;
+            margin: auto;
+            background: rgba(0, 0, 0, 0.3) url('https://via.placeholder.com/1500x500?text=Background+Image') no-repeat center center;
+            background-size: cover;
+        }
+    
+        section h2 {
+            text-align: center;
+            color: #004080;
+            margin-bottom: 30px;
+        }
+    
+        /* Footer */
+        footer {
+            background: #003366;
+            color: white;
+            text-align: center;
+            padding: 15px;
+            font-size: 14px;
+        }
+    
+        /* Admission Form */
+        #admission-form {
+            display: none;
+            position: fixed;
+            top: 50%; left: 50%;
+            transform: translate(-50%, -50%);
+            background: white;
+            padding: 20px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            border-radius: 10px;
+            z-index: 1001;
+            width: 300px;
+        }
+    
+        #admission-form input, #admission-form select, #admission-form button {
+            width: 100%;
+            margin-bottom: 15px;
+            padding: 10px;
+            font-size: 16px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+    
+        #overlay {
+            display: none;
+            position: fixed;
+            top: 0; left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            z-index: 1000;
+        }
+    
+        /* Mobile logo box */
+        @media(max-width: 600px) {
+            .logo-box {
+                width: 180px;
+                height: 220px;
+            }
+    
+            .logo-box img {
+                width: 100px;
+                height: 100px;
+            }
+    
+            .logo-box .college-info h3 {
+                font-size: 14px;
+            }
+    
+            .logo-box .college-info p {
+                font-size: 10px;
+            }
+        }
+    
+        /* Footer Section with background image */
+        #footer-section {
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)),
+                       url('https://www.rdcollege.in/images/gallery.jpeg');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-color: #121212; /* fallback */
+            color: white;
+            text-align: center;
+            padding: 60px 20px;
+            position: relative;
+        }
+    
+        .credit-text {
+            font-size: 24px;
+            font-weight: bold;
+            margin-bottom: 30px;
+        }
+    
+        .profile-pic-glow {
+            width: 180px;
+            height: 180px;
+            border-radius: 50%;
+            overflow: hidden;
+            animation: softGlow 3s ease-in-out infinite alternate;
+            box-shadow: 0 0 25px 10px rgba(255, 215, 0, 0.5);
+            margin-bottom: 30px;
+        }
+    
+        .profile-pic-glow img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 50%;
+        }
+    
+        /* Add a smooth glowing effect on text */
+        .glowing-text {
+            font-size: 3rem;
+            font-family: 'Arial', sans-serif;
+            color: white;
+            text-align: center;
+            animation: glowing 1.5s ease-in-out infinite;
+        }
+    
+        @keyframes glowing {
+            0% {
+                text-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 15px #ff0099, 0 0 20px #ff0099, 0 0 25px #ff0099;
+                color: #ff0099;
+            }
+            50% {
+                text-shadow: 0 0 10px #fff, 0 0 20px #ff0099, 0 0 30px #ff0099, 0 0 40px #ff0099;
+                color: #ff3399;
+            }
+            100% {
+                text-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 15px #ff0099, 0 0 20px #ff0099, 0 0 25px #ff0099;
+                color: #ff0099;
+            }
+        }
+    
+        @keyframes softGlow {
+            from {
+                box-shadow: 0 0 20px 8px rgba(255, 215, 0, 0.4);
+            }
+            to {
+                box-shadow: 0 0 40px 15px rgba(255, 215, 0, 0.9);
+            }
+        }
+
+        @media (max-width: 768px) {
+  #overview,
+  #courses,
+  #contact {
+    height: auto !important;
+    padding: 30px 15px;
+    margin-bottom: 50px;
+  }
+
+  .course-boxes {
+    grid-template-columns: 1fr; /* 1 column on mobile */
+    gap: 20px;
+  }
+}
+ /* Overview Section Styles */
+ #overview {
+  padding: 40px 20px;
+  max-width: 1200px;
+  margin: auto;
+  background: rgba(0, 0, 0, 0.3) url('https://via.placeholder.com/1500x500?text=Background+Image') no-repeat center center;
+  background-size: cover;
+  height: 100vh; /* Take up the full height of the viewport */
+  position: relative;
+}
+
+#overview h2 {
+  text-align: center;
+  color: #004080;
+  margin-bottom: 30px;
+}
+
+#overview .image-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr); /* Default for desktop */
+  gap: 30px; /* Increased gap between images */
+  margin-bottom: 40px; /* Increased bottom margin */
+}
+
+#overview .image-grid img {
+  width: 100%;
+  border-radius: 10px;
+}
+
+#overview p {
+  line-height: 1.8;
+  text-align: center;
+  color: white;
+  margin-bottom: 120px; /* Added margin for more space */
+}
+
+/* Mobile View */
+@media (max-width: 768px) {
+  #overview {
+    padding: 10px; /* Less padding for mobile */
+    background-size: cover;
+    background-position: center; /* Ensures the background image looks good on mobile */
+    height: 100vh; /* Full height of the screen */
+  }
+
+  #overview h2 {
+    font-size: 24px; /* Smaller heading font size on mobile */
+    margin-bottom: 20px;
+  }
+
+  #overview .image-grid {
+    grid-template-columns: 1fr; /* One column for mobile */
+    gap: 10px; /* Less gap between images */
+    margin-bottom: 15px;
+  }
+
+  #overview .image-grid img {
+    border-radius: 8px; /* Slightly smaller border-radius for mobile */
+  }
+
+  #overview p {
+    font-size: 14px; /* Smaller text size on mobile */
+    padding: 0 10px; /* Add padding to avoid text sticking to edges */
+    margin-top: 10px; /* Add top margin for spacing */
+  }
+
+}
+#contact {
+  margin-top: 250px; /* optional: if you want more gap */
+}
+
+#courses {
+  padding: 60px 20px;
+  height: 100vh;
+  background-size: cover;
+
+}
+
+  body {
+    font-family: 'Segoe UI', sans-serif;
+    margin: 0;
+    padding: 0;
+    background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), 
+                url('https://www.rdcollege.in/images/gallery.jpeg') no-repeat center center;
+    background-size: cover;
+    color: white;
+  }
+
+  header {
+    background-color: #004080;
+    padding: 15px;
+    text-align: center;
+  }
+
+  header h1 {
+    margin: 0;
+    font-size: 24px;
+    color: white;
+  }
+
+  section {
+    padding: 40px 20px;
+    max-width: 900px;
+    margin: auto;
+    text-align: center;
+  }
+
+  h2 {
+    font-size: 32px;
+    color: black;
+    font-weight: bold;
+    margin-bottom: 30px;
+    background-color: rgba(255, 255, 255, 0.7);
+    padding: 10px;
+    border-radius: 10px;
+    display: inline-block;
+  }
+
+  .form-container {
+    background: rgba(0, 0, 0, 0.6);
+    padding: 30px;
+    border-radius: 15px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.4);
+    backdrop-filter: blur(6px);
+    margin-bottom: 40px;
+  }
+
+  .form-container h3 {
+    color: #ffd700;
+    margin-bottom: 20px;
+  }
+
+  .form-container input,
+  .form-container textarea {
+    width: 100%;
+    padding: 12px;
+    margin-bottom: 15px;
+    border: none;
+    border-radius: 8px;
+    font-size: 16px;
+  }
+
+  .form-container button {
+    padding: 12px;
+    width: 100%;
+    border: none;
+    background-color: #004080;
+    color: white;
+    font-weight: bold;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 16px;
+  }
+
+  iframe {
+    width: 100%;
+    height: 350px;
+    border: 0;
+    border-radius: 10px;
+    margin-top: 20px;
+  }
+
+  footer {
+    background: #003366;
+    color: white;
+    text-align: center;
+    padding: 15px;
+    font-size: 14px;
+    margin-top: 50px;
+  }
+
+
+  /* Mobile Responsiveness */
+  @media(max-width: 768px) {
+    header h1 {
+      font-size: 20px;
+    }
+
+    section {
+      padding: 20px;
+    }
+
+    .form-container {
+      padding: 20px;
+    }
+
+    h2 {
+      font-size: 28px;
+      margin-bottom: 20px;
+    }
+
+    .form-container input,
+    .form-container textarea {
+      font-size: 14px;
+    }
+
+    .form-container button {
+      font-size: 14px;
+    }
+
+    iframe {
+      height: 250px;  /* Adjust iframe size for smaller screens */
+    }
+  }
+
+  @media(max-width: 600px) {
+    .form-container {
+      padding: 15px;
+    }
+
+    h2 {
+      font-size: 22px;
+    }
+
+    .form-container input,
+    .form-container textarea {
+      font-size: 14px;
+    }
+
+    .form-container button {
+      font-size: 14px;
+    }
+
+    iframe {
+      height: 200px; /* Further adjust iframe for very small screens */
+    }
+   @media (max-width: 768px) {
+  nav ul {
+    display: none;
+  }
+
+  nav ul.show {
+    display: flex;
+    flex-direction: column;
+  }
+}
+
+}
+.star {
+      font-size: 50px;
+      cursor: pointer;
+      color: gray;
+    }
+    .star.checked {
+      color: gold;
+    }
+
+/* Courses Section */
+#courses {
+  margin-top: 100px; /* optional: if you want more gap */
+}
+
+#courses {
+  padding: 60px 20px;
+  height: 100vh;
+  background-size: cover;
+  
+}
+
+      #courses {
+          background: url('https://images.unsplash.com/photo-1532619675605-1b8b7f0e7225?auto=format&fit=crop&w=1200&q=80') no-repeat center center / cover;
+          padding: 60px 20px;
+          height: 100vh; /* Full viewport height for mobile */
+          background-size: cover; /* Ensure the background covers the entire section */
+          background-position: center;
+          margin-bottom: 80px; /* Added extra space after the section */
+      }
+      
+      #courses h2 {
+          text-align: center;
+          color: white;
+          margin-bottom: 40px;
+          font-size: 32px;
+      }
+      
+      .course-boxes {
+          display: grid;
+          grid-template-columns: repeat(3, 1fr); /* Default 3 columns for desktop */
+          gap: 30px;
+          max-width: 1200px;
+          margin: 0 auto;
+      }
+      
+      .course-box {
+          background: rgba(255, 255, 255, 0.1); /* Transparent background */
+          border: 2px solid rgba(255, 255, 255, 0.6); /* White transparent border */
+          border-radius: 12px;
+          padding: 20px;
+          text-align: center;
+          color: white;
+          backdrop-filter: blur(10px); /* Glassmorphism */
+          box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+          transition: transform 0.3s ease, box-shadow 0.3s ease;
+      }
+      
+      .course-box:hover {
+          transform: translateY(-5px);
+          box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
+      }
+      
+      .course-box img {
+          width: 64px;
+          height: 64px;
+          margin-bottom: 20px; /* Increased bottom margin */
+      }
+      
+      .course-box h3 {
+          font-size: 18px;
+          margin-bottom: 10px;
+          color: #fff;
+      }
+      
+      .course-box p {
+          font-size: 14px;
+          color: #f0f0f0;
+      }
+      
+      /* Mobile Views */
+      @media (max-width: 768px) {
+          #courses {
+              padding: 40px 10px; /* Slightly reduced padding for mobile */
+          }
+          .course-boxes {
+              grid-template-columns: repeat(2, 1fr); /* 2 columns for tablets */
+          }
+      }
+      
+      @media (max-width: 480px) {
+          #courses {
+              padding: 30px 10px; /* Even less padding on very small screens */
+          }
+          .course-boxes {
+              grid-template-columns: 1fr; /* 1 column for small screens */
+              gap: 20px; /* Reduce gap between course boxes */
+          }
+      
+         
+      }
+      footer.social-row {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    padding: 20px 0;
+    background: transparent; /* fully transparent */
+  }
+
+  footer.social-row a {
+    color: gold;
+    font-size: 28px;
+    text-decoration: none;
+    transition: transform 0.2s;
+  }
+
+  footer.social-row a:hover {
+    transform: scale(1.2);
+  }
+
+</style>
+</head>
+<body>
+
+  <!-- ✅ Font Awesome CDN -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+<header>
+  <div class="top-row">
+    <div class="logo">
+      <a href="#" onclick="toggleAdmissionForm()">
+        <img src="https://www.rdcollege.in/images/logo.png" alt="College Logo" />
+      </a>
+    </div>
+    <h1>RD National College of Arts and Science, Erode</h1>
+ </div>
+
+  <nav>
+    <ul id="menu">
+      <li><a href="#"><i class="fas fa-home"></i> Home</a></li>
+      <li>
+        <a href="#"><i class="fas fa-info-circle"></i> About Us &#9662;</a>
+        <ul>
+          <li><a href="overview.html"><i class="fas fa-eye"></i> Overview</a></li>
+          <li><a href="leadership.html"><i class="fas fa-users-cog"></i> Leadership</a></li>
+          <li><a href="principal.html"><i class="fas fa-user-tie"></i> Principal</a></li>
+          <li><a href="academic-director.html"><i class="fas fa-chalkboard-teacher"></i> Academic Director</a></li>
+        </ul>
+      </li>
+      <li>
+       
+        
+        <li>
+          <a href="https://www.rdcollege.in/skynetbee/" target="_blank"><i class="fas fa-network-wired"></i> Access Skynet</a>
+        </li>
+        <li>
+          <a href="skynetbee.html">
+            <img src="https://www.rdcollege.in/skynetbee/skynet-framework/icons/skynetbeepng.png" alt="SkynetBee Icon" style="width:20px; vertical-align:middle; margin-right:5px;" />
+            SkynetBee
+          </a>
+        </li>
+        
+      <li>
+        <a href="#"><i class="fas fa-graduation-cap"></i> Academics &#9662;</a>
+        <ul>
+          <li>
+            <a href="#"><i class="fas fa-book-open"></i> UG Programmes &#9656;</a>
+            <ul>
+              <li><a href="school-commerce.html"><i class="fas fa-chart-line"></i> School Of Commerce</a></li>
+              <li><a href="school-computerscience.html"><i class="fas fa-desktop"></i> School Of Computer Science</a></li>
+              <li><a href="school-management.html"><i class="fas fa-briefcase"></i> School Of Management</a></li>
+            </ul>
+          </li>
+          <li><a href="pg.html"><i class="fas fa-university"></i> PG Programmes</a></li>
+          <li><a href="research-programmes.html"><i class="fas fa-flask"></i> Research Programmes</a></li>
+        </ul>
+      </li>
+      <li><a href="#faculty"><i class="fas fa-chalkboard-teacher"></i> Faculty Details</a></li>
+      <li><a href="contact.html"><i class="fas fa-envelope"></i> Contact</a></li>
+    </ul>
+  </nav>
+  <button id="menuToggle">☰</button>
+
+  
+</header>
+<div id="overlay" onclick="toggleAdmissionForm()"></div>
+<div id="admission-form">
+  <h2>Admission Form</h2>
+  <form>
+    <input type="text" placeholder="Name" required />
+    <input type="text" placeholder="Mobile" required />
+    <input type="email" placeholder="E-mail" required />
+    <select>
+      <option value="undergraduate">Under Graduate Program</option>
+      <option value="postgraduate">Post Graduate Program</option>
+    </select>
+    <button type="submit">Submit</button>
+  </form>
+</div>
+
+<!-- Slideshow -->
+<div class="slider">
+  <div class="slides"> 
+    <img src="https://raw.githubusercontent.com/Bhavana-Oii2628/sag/refs/heads/raw/WhatsApp%20Image%202025-06-06%20at%2016.28.42.jpeg" alt="Science Exhibition" />
+    <img src="https://raw.githubusercontent.com/Bhavana-Oii2628/nah/refs/heads/raw/WhatsApp%20Image%202025-06-06%20at%2016.07.15.jpeg" alt="B.Com Class" />
+    <img src="https://raw.githubusercontent.com/Bhavana-Oii2628/hfyd/refs/heads/raw/WhatsApp%20Image%202025-06-06%20at%2016.27.30%20(1).jpeg" alt="Campus View" />
+    <img src="https://www.rdcollege.in/images/gallery.jpeg" alt="Annual Day" />
+    <img src="https://raw.githubusercontent.com/Bhavana-Oii2628/nah/refs/heads/raw/WhatsApp%20Image%202025-06-06%20at%2016.15.17.jpeg" alt="Science Exhibition" />
+    <img src="https://raw.githubusercontent.com/Bhavana-Oii2628/hfyd/refs/heads/raw/WhatsApp%20Image%202025-06-06%20at%2016.20.49.jpeg" alt="Library" />
+   <img src="https://raw.githubusercontent.com/Bhavana-Oii2628/nah/refs/heads/raw/WhatsApp%20Image%202025-06-06%20at%2015.52.34.jpeg" alt="ram"/>
+    <img src="https://raw.githubusercontent.com/Bhavana-Oii2628/nah/refs/heads/raw/WhatsApp%20Image%202025-06-06%20at%2016.28.41.jpeg" alt="English Department" />
+    <img src="https://www.rdcollege.in/images/cs.new.1.jpg" alt="M.Com Class" />
+    <img src="https://raw.githubusercontent.com/Bhavana-Oii2628/nah/refs/heads/raw/WhatsApp%20Image%202025-06-06%20at%2016.32.20.jpeg" alt="CA Students" />
+    <img src="https://raw.githubusercontent.com/Bhavana-Oii2628/nah/refs/heads/raw/WhatsApp%20Image%202025-06-07%20at%2013.12.21.jpeg" alt="Commerce Hall" />
+    <img src="https://raw.githubusercontent.com/Bhavana-Oii2628/nah/refs/heads/raw/WhatsApp%20Image%202025-06-06%20at%2013.40.20.jpeg" alt="Computer Science Lab" />
+    <img src="https://raw.githubusercontent.com/Bhavana-Oii2628/sag/refs/heads/raw/WhatsApp%20Image%202025-06-06%20at%2016.28.42.jpeg" alt="Science Exhibition" />
+    <img src="https://raw.githubusercontent.com/Bhavana-Oii2628/nah/refs/heads/raw/WhatsApp%20Image%202025-06-06%20at%2016.07.15.jpeg" alt="B.Com Class" />
+   <img src="https://raw.githubusercontent.com/Bhavana-Oii2628/hfyd/refs/heads/raw/WhatsApp%20Image%202025-06-06%20at%2016.27.30%20(1).jpeg" alt="Campus View" />
+   <img src="https://www.rdcollege.in/images/gallery.jpeg" alt="Annual Day" />
+   <img src="https://raw.githubusercontent.com/Bhavana-Oii2628/nah/refs/heads/raw/WhatsApp%20Image%202025-06-06%20at%2016.15.17.jpeg" alt="Science Exhibition" />
+   <img src="https://raw.githubusercontent.com/Bhavana-Oii2628/hfyd/refs/heads/raw/WhatsApp%20Image%202025-06-06%20at%2016.20.49.jpeg" alt="Library" />
+  <img src="https://raw.githubusercontent.com/Bhavana-Oii2628/nah/refs/heads/raw/WhatsApp%20Image%202025-06-06%20at%2015.52.34.jpeg" alt="ram"/>
+   <img src="https://raw.githubusercontent.com/Bhavana-Oii2628/nah/refs/heads/raw/WhatsApp%20Image%202025-06-06%20at%2016.28.41.jpeg" alt="English Department" />
+   <img src="https://www.rdcollege.in/images/cs.new.1.jpg" alt="M.Com Class" />
+   <img src="https://raw.githubusercontent.com/Bhavana-Oii2628/nah/refs/heads/raw/WhatsApp%20Image%202025-06-06%20at%2016.32.20.jpeg" alt="CA Students" />
+   <img src="https://raw.githubusercontent.com/Bhavana-Oii2628/nah/refs/heads/raw/WhatsApp%20Image%202025-06-07%20at%2013.12.21.jpeg" alt="Commerce Hall" />
+   <img src="https://raw.githubusercontent.com/Bhavana-Oii2628/nah/refs/heads/raw/WhatsApp%20Image%202025-06-06%20at%2013.40.20.jpeg" alt="Computer Science Lab" />
+  </div>
+
+  <div class="logo-box">
+    <img src="https://www.rdcollege.in/images/logo.png" alt="College Logo" />
+    <div class="college-info">
+      <h3>RD National College</h3>
+      <p>Elumathur, Erode, Tamil Nadu</p>
+    </div>
+  </div>
+</div>
+
+<!-- Overview Section -->
+<section id="overview">
+  <h2>Overview</h2>
+  <div class="image-grid">
+    <img src="https://content.jdmagicbox.com/v2/comp/erode/b1/9999px424.x424.181220180507.j6b1/catalogue/rd-national-college-of-arts-and-science-college-elumathur-erode-colleges-2yf92ivjrs.jpg" alt="Image 1">
+    <img src="https://www.rdcollege.in/images/gallery.jpeg" alt="Image 2">
+    <img src="https://www.rdcollege.in/images/cs.new.1.jpg" alt="Image 3">
+    <img src="https://www.rdcollege.in/images/IT%20new.jpg" alt="Image 4">
+    <img src="https://www.rdcollege.in/images/viscom.new.JPG" alt="Image 5">
+    <img src="https://www.rdcollege.in/images/english.new.jpg" alt="Image 6">
+  </div>
+
+ 
+</section>
+<section id="courses">
+ 
+    <!-- Font Awesome Icons CDN -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+
+    <h2>Our Courses</h2>
+    <div class="course-boxes">
+  
+      <div class="course-box">
+        <img src="https://cdn-icons-png.flaticon.com/512/1681/1681356.png" alt="B.Com" />
+        <h3>B.Com</h3>
+        <p>Basics of commerce and accounting.</p>
+      </div>
+  
+      <div class="course-box">
+        <img src="https://cdn-icons-png.flaticon.com/512/2541/2541991.png" alt="B.Com CA" />
+        <h3>B.Com (CA)</h3>
+        <p>Commerce with computer application.</p>
+      </div>
+  
+      <div class="course-box">
+        <img src="https://cdn-icons-png.flaticon.com/512/2972/2972364.png" alt="A&F" />
+        <h3>B.Com (A&F)</h3>
+        <p>Accounting & Finance specialization.</p>
+      </div>
+  
+      <div class="course-box">
+        <img src="https://cdn-icons-png.flaticon.com/512/2721/2721304.png" alt="IT" />
+        <h3>B.Sc IT</h3>
+        <p>Information Technology fundamentals.</p>
+      </div>
+  
+      <div class="course-box">
+        <img src="https://cdn-icons-png.flaticon.com/512/9131/9131513.png" alt="AI DS" />
+        <h3>B.Sc AI & DS</h3>
+        <p>AI and Data Science essentials.</p>
+      </div>
+  
+      <div class="course-box">
+        <img src="https://cdn-icons-png.flaticon.com/512/2721/2721275.png" alt="CS" />
+        <h3>B.Sc Computer Science</h3>
+        <p>Programming, OS and DBMS study.</p>
+      </div>
+  
+      <div class="course-box">
+        <img src="https://cdn-icons-png.flaticon.com/512/1010/1010607.png" alt="BBA" />
+        <h3>BBA</h3>
+        <p>Business Admin and leadership.</p>
+      </div>
+  
+      <div class="course-box">
+        <img src="https://cdn-icons-png.flaticon.com/512/1020/1020607.png" alt="MBA" />
+        <h3>MBA</h3>
+        <p>Master of Business Administration.</p>
+      </div>
+  
+      <div class="course-box">
+        <img src="https://cdn-icons-png.flaticon.com/512/1995/1995574.png" alt="M.Com" />
+        <h3>M.Com</h3>
+        <p>Advanced Commerce & Finance.</p>
+      </div>
+  
+    </div>
+  </section>
+<!-- Inside Home Page after Overview Section or where desired -->
+<section id="contact">
+    <h2>Contact Us</h2>
+  
+    <div class="form-container">
+      <h3>Admission Enquiry</h3>
+      <form action="#" method="POST">
+        <input type="text" name="name" placeholder="Your Name" required />
+        <input type="email" name="email" placeholder="Your Email" required />
+        <input type="tel" name="phone" placeholder="Your Phone Number" required />
+        <textarea name="message" placeholder="Your Message" rows="4" required></textarea>
+        <button type="submit">Submit</button>
+      </form>
+    </div>
+  
+    <!-- Original Google Map of RD National College, Elumathur -->
+   <!-- Google Maps Embed (replace this with RD National College's actual location) -->
+   <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3770.784758801271!2d72.83028671479835!3d19.0585101871333!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3be7c7089f0b42a7%3A0x91fc2c091fd16962!2sRD%20National%20College%20of%20Arts%20and%20Science!5e0!3m2!1sen!2sin!4v1626268587881!5m2!1sen!2sin" allowfullscreen="" loading="lazy"></iframe>
+  </section>
+  
+  
+
+<section id="faculty">
+  <h2>Faculty Details</h2>
+  <p style="color:white;text-align:center;">Meet our experienced faculty across departments.</p>
+  <div style="text-align:center;">
+    <a href="faculty-details.html" style="color:yellow; text-decoration:underline;">View Faculty Details</a>
+  </div>
+</section>
+  
+
+<!-- Main Footer Section -->
+<div id="footer-section">
+  <div class="credit-text">
+    <p>Website By B.Bhavana</p>
+  </div>
+
+  <div class="profile-pic-glow">
+    <img src="https://raw.githubusercontent.com/Bhavana-Oii2628/images/refs/heads/main/WhatsApp%20Image%202025-05-16%20at%2022.21.33.jpeg" alt="Profile Image">
+  </div>
+
+  <form id="ratingForm" style="display: none;">
+    <input type="hidden" name="rating" id="ratingInput" />
+  </form>
+
+  <div class="rating-title">
+    <h2>Rate Us</h2>
+    <div id="stars">
+      <span class="star" data-value="1">&#9733;</span>
+      <span class="star" data-value="2">&#9733;</span>
+      <span class="star" data-value="3">&#9733;</span>
+      <span class="star" data-value="4">&#9733;</span>
+      <span class="star" data-value="5">&#9733;</span>
+    </div>
+  </div>
+</div>
+  <!-- Social Footer -->
+  <footer class="social-row">
+    <a href="https://api.whatsapp.com/send?phone=7373747474" target="_blank"><i class="fab fa-whatsapp"></i></a>
+    <a href="https://www.linkedin.com/company/rdcluster/" target="_blank"><i class="fab fa-linkedin"></i></a>
+    <a href="https://www.instagram.com/rdnationalcollegeerode" target="_blank"><i class="fab fa-instagram"></i></a>
+    <a href="https://www.facebook.com/rdcluster" target="_blank"><i class="fab fa-facebook"></i></a>
+    <a href="https://x.com/RD_Cluster" target="_blank"><i class="fab fa-twitter"></i></a>
+  </footer>
+
+<!-- Final Footer -->
+<footer>
+  <p>&copy; 2025 RD National College of Arts and Science. All rights reserved.</p>
+</footer>
+
+<script>
+
+document.addEventListener("DOMContentLoaded", function () {
+    const menuToggle = document.getElementById("menuToggle");
+    const menu = document.getElementById("menu");
+
+    menuToggle.addEventListener("click", function () {
+      menu.classList.toggle("show");
+    });
+  });
+    // Toggle admission form visibility
+    function toggleAdmissionForm() {
+        const form = document.getElementById('admission-form');
+        const overlay = document.getElementById('overlay');
+        form.style.display = form.style.display === 'block' ? 'none' : 'block';
+        overlay.style.display = overlay.style.display === 'block' ? 'none' : 'block';
+    }
+// ⭐ Rating Stars Logic
+
+    const stars = document.querySelectorAll('.star');
+
+    stars.forEach((star, index) => {
+      star.addEventListener('click', () => {
+        const rating = star.getAttribute('data-value');
+
+        // Highlight selected stars
+        stars.forEach((s, i) => {
+          s.classList.toggle('checked', i < rating);
+        });
+
+        // Send rating to PHP via fetch
+        fetch('submit_rating.php', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/x-www-form-urlencoded',
+          },
+          body: 'rating=' + rating
+        })
+        .then(response => response.text())
+        .then(data => {
+          alert(data); // Show confirmation
+        });
+      });
+    });
+  let currentIndex = 0;
+  const slides = document.querySelector('.slides');
+  const totalSlides = document.querySelectorAll('.slides img').length;
+
+  function showSlide(index) {
+    slides.style.transform = `translateX(-${index * 100}vw)`;
+  }
+  function nextSlide() {
+    currentIndex = (currentIndex + 1) % totalSlides;
+    showSlide(currentIndex);
+  }
+  // Auto-slide every 3 seconds
+  setInterval(nextSlide, 3000);
+  const menuToggle = document.getElementById('menuToggle');
+  const sideMenu = document.querySelector('.side-menu');
+  const overlay = document.getElementById('overlay');
+
+  menuToggle.addEventListener('click', () => {
+    sideMenu.classList.toggle('open');
+    overlay.classList.toggle('active');
+  });
+
+  overlay.addEventListener('click', () => {
+    sideMenu.classList.remove('open');
+    overlay.classList.remove('active');
+  });
+// Wait for DOM load
+document.addEventListener('DOMContentLoaded', () => {
+  const menuLinks = document.querySelectorAll('#menu a');
+
+  menuLinks.forEach(link => {
+    link.addEventListener('click', () => {
+      menuLinks.forEach(l => l.classList.remove('active'));
+      link.classList.add('active');
+    });
+  });
+});
+
+
+</script>
+
+
+
+</body>
+</html>

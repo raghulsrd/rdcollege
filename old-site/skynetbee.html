@@ -1,0 +1,506 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>SkynetBee - RD National College</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />
+  <style>
+ body {
+  font-family: 'Segoe UI', sans-serif;
+  scroll-behavior: smooth;
+  overflow-x: hidden;
+  background-image: url('https://www.rdcollege.in/images/gallery.jpeg');
+  background-size: cover;
+  background-position: center center;
+  background-attachment: fixed;
+  color: white;
+  position: relative;
+  margin: 0;
+  padding: 0;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+}
+
+body::before {
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: -1;
+}
+.section_title {
+  position: fixed;
+  top: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 1000;
+
+  background: transparent;     /* 🔥 Transparent background */
+  backdrop-filter: none;       /* No blur */
+  padding: 10px 20px;
+
+  border: none;
+  box-shadow: none;
+  text-align: center;
+}
+
+.section_title h1 {
+  font-size: 36px;
+  font-weight: bold;
+  color: gold;
+  margin: 0;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background: transparent;     /* No background on text */
+}
+
+.section_title h1 img {
+  width: 36px;
+  height: auto;
+}
+
+
+@media (max-width: 768px) {
+  .section_title h1 {
+    font-size: 24px;
+  }
+
+  .section_title h1 img {
+    width: 24px;
+  }
+}
+
+@media (max-width: 480px) {
+  .section_title h1 {
+    font-size: 20px;
+  }
+
+  .section_title h1 img {
+    width: 20px;
+  }
+}
+
+.carousel-container {
+  position: relative;
+  width: 90vw;
+  max-width: 900px;
+  height: 60vh;
+
+  margin-top: 200px;  /* 🔥 Extra big space below the fixed title */
+  margin-bottom: 40px;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.video-section {
+  padding-top: 50px;      /* Extra spacing between title and video */
+  margin-bottom: 50px;
+}
+
+
+.video-card {
+  width: 100%;
+  height: 100%;
+  border-radius: 30px;
+  overflow: hidden;
+  background: rgba(255, 255, 255, 0.15);
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.video-card video {
+  width: 100%;
+  height: 100%;
+  border-radius: 20px;
+  object-fit: cover;
+}
+
+.controls {
+  position: absolute;
+  top: 10px;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  padding: 0 30px;
+  pointer-events: none;
+  z-index: 10;
+}
+
+.controls button {
+  pointer-events: all;
+  background: transparent;
+  border: 2px solid gold;
+  color: gold;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  font-size: 28px;
+  cursor: pointer;
+  user-select: none;
+  transition: background 0.3s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+}
+
+.controls button:hover {
+  background: gold;
+  color: black;
+}
+
+/* Image Gallery */
+.image-gallery {
+  display: flex;
+  gap: 30px;
+  overflow-x: auto;
+  padding: 30px 0;
+  width: 90vw;
+  max-width: 900px;
+  margin: 150px auto 40px;
+}
+
+.image-gallery img {
+  width: 700px;
+  height: 500px;
+  object-fit: contain;   /* ✅ This shows the full image */
+  background-color: #000; /* Optional: fills space if image doesn't fill box */
+  border-radius: 12px;
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.4);
+  transition: transform 0.3s ease;
+}
+
+.image-gallery img:hover {
+  transform: scale(1.05);
+}
+
+
+/* Chairman Section */
+.chairman-section {
+  margin-top: 100px;
+}
+.container {
+  max-width: 800px; /* 🔽 reduced from 1000px */
+  background: rgba(255, 255, 255, 0.15);
+  padding: 20px; /* 🔽 slightly less padding */
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
+  display: flex;
+  gap: 30px;
+  align-items: center;
+  border: 2px solid gold;
+  margin: 30px auto;
+  color: white;
+}
+
+.container img {
+  width: 220px;  /* 🔽 smaller image */
+  height: 220px;
+  border-radius: 12px;
+  object-fit: cover;
+  border: 3px solid #004080;
+}
+
+.details h2 {
+  margin-top: 0;
+  font-size: 24px; /* 🔽 reduced size */
+  color: gold;
+}
+
+.details p {
+  margin: 10px 0;
+  font-size: 16px; /* 🔽 reduced text size */
+  color: white;
+}
+
+@media (max-width: 768px) {
+  .container {
+    flex-direction: column;
+    text-align: center;
+    gap: 20px;
+  }
+
+  .container img {
+    width: 180px;
+    height: 180px;
+  }
+}
+
+
+/* Map Section */
+.map-section {
+  margin-top: 100px !important; /* 🔥 Pushes map further down */
+}
+.map-section {
+  text-align: center;
+  margin: 40px 0;
+  width: 90vw;
+  max-width: 900px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+iframe {
+  width: 100%;
+  height: 400px;
+  border: none;
+  border-radius: 10px;
+}
+
+/* Social Footer */
+footer.social-row {
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+  padding: 20px 0;
+  background: transparent;
+  width: 100%;
+  max-width: 900px;
+  margin: 0 auto 30px;
+}
+
+footer.social-row a {
+  color: gold;
+  font-size: 28px;
+  text-decoration: none;
+  transition: transform 0.2s;
+}
+
+footer.social-row a:hover {
+  transform: scale(1.2);
+}
+.social-row {
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+  padding: 20px 0;
+  background: transparent;
+  width: 100%;
+  max-width: 900px;
+  margin: 0 auto 30px;
+}
+
+.social-row a {
+  color: gold;
+  font-size: 28px;
+  text-decoration: none;
+  transition: transform 0.2s;
+}
+
+.social-row a:hover {
+  transform: scale(1.2);
+}
+
+footer {
+  background-color: #004080;
+  color: white;
+  text-align: center;
+  padding: 10px;
+  max-width: 900px;
+  margin: 0 auto 30px;
+  border-radius: 5px;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .image-gallery {
+    gap: 15px;
+    padding: 20px 10px;
+  }
+
+  .image-gallery img {
+    width: 100%;
+    max-width: 90vw;
+    height: auto;
+    object-fit: contain;
+  }
+
+  .chairman-section img {
+    width: 140px;
+  }
+
+  .contact-info {
+    font-size: 16px;
+  }
+
+  iframe {
+    height: 300px;
+  }
+}
+
+
+  </style>
+</head>
+<body>
+    <div>
+
+        <div class="video-section">
+            <div class="section_title">
+              <h1>
+                <img src="https://www.rdcollege.in/skynetbee/skynet-framework/icons/skynetbeepng.png" alt="SkynetBee Icon" />
+                SkynetBee
+              </h1>
+            </div>
+          
+      
+
+  <!-- Video Carousel Section -->
+  <div class="carousel-container">
+    <div class="controls">
+      <button id="btn-remove" title="Previous Video">−</button>
+      <button id="btn-add" title="Next Video">+</button>
+    </div>
+    <div class="carousel" id="carousel">
+      <!-- Single video card appended by JS -->
+    </div>
+  </div>
+<div>
+  <!-- Image Gallery -->
+  <div class="image-gallery">
+    <img src="https://raw.githubusercontent.com/Bhavana-Oii2628/im/refs/heads/main/reelsvideo.io_1749137245475.jpeg" alt="Image 1" />
+    <img src="https://raw.githubusercontent.com/Bhavana-Oii2628/im/refs/heads/main/WhatsApp%20Image%202025-06-05%20at%2021.58.17.jpeg" alt="Image 2" />
+    <img src="https://raw.githubusercontent.com/Bhavana-Oii2628/im/refs/heads/main/WhatsApp%20Image%202025-06-05%20at%2021.58.18%20(1).jpeg" alt="Image 3" />
+   <img src=" https://raw.githubusercontent.com/Bhavana-Oii2628/nah/refs/heads/raw/WhatsApp%20Image%202025-06-06%20at%2015.52.34.jpeg" alt="Image4"/>
+   
+    <img src="https://raw.githubusercontent.com/Bhavana-Oii2628/nah/refs/heads/raw/WhatsApp%20Image%202025-06-06%20at%2013.36.11%20(1).jpeg" alt="Image 6"/>
+    <img src="https://raw.githubusercontent.com/Bhavana-Oii2628/nah/refs/heads/raw/WhatsApp%20Image%202025-06-06%20at%2016.15.17.jpeg" alt="Image 7"/>
+    <img src="https://raw.githubusercontent.com/Bhavana-Oii2628/im/refs/heads/main/WhatsApp%20Image%202025-06-05%20at%2021.58.18.jpeg" alt="Image 8" />
+    <img src="https://raw.githubusercontent.com/Bhavana-Oii2628/nah/refs/heads/raw/WhatsApp%20Image%202025-06-06%20at%2013.36.11.jpeg" alt="Image 9"/>
+    <img src="https://raw.githubusercontent.com/Bhavana-Oii2628/im/refs/heads/main/WhatsApp%20Image%202025-06-05%20at%2021.58.20.jpeg" alt="Image 10" />
+    <img src="https://raw.githubusercontent.com/Bhavana-Oii2628/nah/refs/heads/raw/WhatsApp%20Image%202025-06-06%20at%2015.51.46.jpeg" alt="image12"/>
+    <img src="https://raw.githubusercontent.com/Bhavana-Oii2628/im/refs/heads/main/WhatsApp%20Image%202025-06-05%20at%2021.58.19.jpeg" alt="Image 11" />
+   
+  </div>
+</div>
+ <!-- Chairman Section -->
+<div class="chairman-section">
+  <div class="container">
+    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTbOAVCDTO9U70Up_Wm2iVr_oWErjUxbLdMxg&s" alt="Chairman Sir">
+    <div class="details">
+      <h2>Our Chairman Sir</h2>
+      <p><strong>Contact:</strong> +91 7373747474</p>
+      <p>Chairman of RD National College of Arts and Science, providing visionary leadership and fostering academic excellence.</p>
+    </div>
+  </div>
+</div>
+
+  
+
+  <!-- Google Map -->
+  <div class="map-section">
+    <iframe 
+      src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3911.3183137200154!2d77.71997007457438!3d11.36524734869747!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3ba96f68d9da86d5%3A0xcb40c5f99809e0f0!2sRD%20National%20College%20of%20Arts%20and%20Science!5e0!3m2!1sen!2sin!4v1717425192355!5m2!1sen!2sin" 
+      allowfullscreen="" 
+      loading="lazy">
+    </iframe>
+  </div>
+
+  <!-- Social Footer -->
+  <footer class="social-row">
+    <a href="https://api.whatsapp.com/send?phone=7373747474" target="_blank"><i class="fab fa-whatsapp"></i></a>
+    <a href="https://www.linkedin.com/company/rdcluster/" target="_blank"><i class="fab fa-linkedin"></i></a>
+    <a href="https://www.instagram.com/rdnationalcollegeerode" target="_blank"><i class="fab fa-instagram"></i></a>
+    <a href="https://www.facebook.com/rdcluster" target="_blank"><i class="fab fa-facebook"></i></a>
+    <a href="https://x.com/RD_Cluster" target="_blank"><i class="fab fa-twitter"></i></a>
+  </footer>
+
+
+  <!-- Video Carousel Script -->
+  <script>
+    const videos = [
+      "https://www.rdcollege.in/images/RD%20National%20College%20of%20Arts%20and%20Science%20_%20Erode.mp4",
+      "https://dl.dropboxusercontent.com/scl/fi/nrxy7484f6ur1l34xlb9z/reelsvideo.io_1749105317245.mp4?rlkey=bmc2blzv4cdsxn8vm17i8j6xs&st=bxxzh7mc", 
+       "https://dl.dropboxusercontent.com/scl/fi/y2hd3052yblwgwes8tbys/reelsvideo.io_1749106970109.mp4?rlkey=zynefskwq065y7e2d2kmszonw&st=zlkgaeke",
+      "https://dl.dropboxusercontent.com/scl/fi/97ti739f64llw8qge20w5/reelsvideo.io_1749105236155.mp4?rlkey=gn836w4ozg5i2i7kko15fathn&st=fh04jhqh",
+      "https://dl.dropboxusercontent.com/scl/fi/j37eppz3aa2arpwkjv9mw/reelsvideo.io_1749105179224.mp4?rlkey=vohneod0gtbkj5hdo0f3bg5fr&st=q3gbk536",
+      "https://dl.dropboxusercontent.com/scl/fi/af3iaq1hesqjcg6gsy5ch/reelsvideo.io_1749106894991.mp4?rlkey=aepzrhsx0qy0vnvddoxh1fkdi&st=dteheng9",
+      "https://dl.dropboxusercontent.com/scl/fi/2n46bk0iwzyb0cllb9ly7/reelsvideo.io_1749111199492.mp4?rlkey=hups6plw65lv1uwkomlgfude5&st=y8c9g05u",
+
+
+    
+      
+    ];
+
+    let currentIndex = 0;
+
+    const carousel = document.getElementById('carousel');
+    const addButton = document.getElementById('btn-add');    // Next
+    const removeButton = document.getElementById('btn-remove');  // Previous
+
+    // Create the video card and video element once
+    function createVideoCard() {
+      const videoCard = document.createElement('div');
+      videoCard.classList.add('video-card');
+
+      const video = document.createElement('video');
+      video.controls = true;
+      video.autoplay = true;
+      video.muted = false;
+      video.style.width = '100%';
+      video.style.height = '100%';
+      video.style.borderRadius = '20px';
+      video.style.objectFit = 'cover';
+
+      videoCard.appendChild(video);
+      return { videoCard, video };
+    }
+
+    const { videoCard, video } = createVideoCard();
+    carousel.appendChild(videoCard);
+
+    function updateVideo() {
+      video.src = videos[currentIndex];
+      video.load();
+      video.play();
+    }
+
+    addButton.addEventListener('click', () => {
+      currentIndex = (currentIndex + 1) % videos.length;
+      updateVideo();
+    });
+
+    removeButton.addEventListener('click', () => {
+      currentIndex = (currentIndex - 1 + videos.length) % videos.length;
+      updateVideo();
+    });
+
+    // Load the first video initially
+    updateVideo();
+    function updateVideo() {
+  const videoUrl = videos[currentIndex];
+  videoCard.innerHTML = ''; // Clear existing content
+
+  const videoElement = document.createElement('video');
+  videoElement.src = videoUrl;
+  videoElement.controls = true;
+  videoElement.autoplay = true;
+  videoElement.muted = false;
+  videoElement.style.width = '100%';
+  videoElement.style.height = '100%';
+  videoElement.style.borderRadius = '20px';
+  videoElement.style.objectFit = 'cover';
+
+  // Wait for metadata to load before playing (optional smooth play)
+  videoElement.addEventListener('loadedmetadata', () => {
+    videoElement.play();
+  });
+
+  videoCard.appendChild(videoElement);
+}
+
+
+  </script>
+
+</body>
+</html>
