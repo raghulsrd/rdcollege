@@ -1,0 +1,230 @@
+<!-- <!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Access Denied</title>
+        <style>
+            body {
+                margin: 0;
+                padding: 0;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                height: 100vh;
+                background: linear-gradient(to bottom, #000000, #eb0707);
+                color: rgb(255, 255, 255);
+                font-family: Arial, sans-serif;
+            }
+
+            .access-denied {
+                position: relative;
+                width: 37.5vh; /* Increased size of the card */
+                height: 40vh; /* Increased size of the card */
+                background-color: #bc0000;
+                border: 5px solid #ffffff;
+                border-radius: 20px;
+                box-shadow: 0 10px 30px rgba(0, 0, 0, 0.6);
+                text-align: center;
+                overflow: hidden;
+            }
+
+            .access-denied h1 {
+                font-size: 36px;
+                margin: 20px 0;
+                text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+            }
+
+            .swords-container {
+                position: absolute; /* Use absolute positioning */
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%); /* Center the container */
+                width: 100%;
+                height: 100%;
+            }
+
+            .sword {
+                position: absolute;
+                width: 60%; /* Increased size of swords */
+                height: auto;
+                opacity: 0; /* Initially hidden */
+                animation: moveToCenter 0.5s ease-in-out forwards;
+            }
+
+            /* Left Sword */
+            .sword.left {
+                top: 50%;
+                left: -50%; /* Starting position */
+                transform: translate(-50%, -50%) rotate(-45deg);
+            }
+
+            /* Right Sword */
+            .sword.right {
+                top: 50%;
+                right: -50%; /* Starting position */
+                transform: translate(50%, -50%) rotate(45deg);
+            }
+
+            /* Keyframes for moving both swords to the center simultaneously */
+            @keyframes moveToCenter {
+                0% {
+                    transform: translate(-50%, -50%) rotate(-45deg);
+                    opacity: 0;
+                }
+                50% {
+                    opacity: 1;
+                }
+                100% {
+                    transform: translate(-50%, -50%) rotate(0deg);
+                    left: 50%;
+                    right: 50%;
+                    opacity: 1;
+                }
+            }
+
+            .footer-text {
+                position: absolute;
+                bottom: 10px;
+                left: 50%;
+                transform: translateX(-50%);
+                font-size: 16px;
+                color: white;
+                text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.7);
+            }
+        </style>
+    </head>
+    <body>
+        <div class="access-denied">
+            <h1>ACCESS DENIED</h1>
+            <div class="swords-container">
+
+                <img
+                    src="/access-denied/images/swordLL-new.png"
+                    alt="Sword Left"
+                    class="sword left"
+                />
+
+                <img
+                    src="/access-denied/images/swordRR-new.png"
+                    alt="Sword Right"
+                    class="sword right"
+                />
+            </div>
+            <div class="footer-text">� SkyneTBee</div>
+        </div>
+
+
+        <audio id="audio1" autoplay>
+            <source
+                src="/access-denied/audio/swordsoundeffect.mp3"
+                type="audio/mpeg"
+            />
+        </audio>
+    </body>
+</html> --><!DOCTYPE html><html lang="en"><head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="theme-color" content="#00ff66">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="#00ff66">
+  <title>Skynet System Security</title>
+  <style>
+    /* Hacker-theme terminal look */
+    :root{
+      --bg:#061014; --panel:#07121a; --accent:#35ff7a; --muted:#6fb0a1; --glow:0 0 18px rgba(53,255,122,0.12);
+      --mono: 'Courier New', Courier, monospace;
+    }
+    html,body{height:90%;margin:0;background:radial-gradient(ellipse at 10% 10%, #071617 0%, var(--bg) 40%);font-family:var(--mono);color:var(--accent)}
+    .wrap{min-height:100%;display:flex;align-items:center;justify-content:center;padding:48px}
+    .card{width:min(920px,94%);background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.004));border-radius:12px;padding:28px;box-shadow:var(--glow);} 
+    .top{display:flex;align-items:center;gap:16px}
+    .leds{display:flex;gap:6px}
+    .led{width:12px;height:12px;border-radius:50%;background:#0b2b18;box-shadow:0 0 8px rgba(0,0,0,0.6) inset}
+    .led.red{background:linear-gradient(180deg,#ff4d4d,#a80000)}
+    .led.yellow{background:linear-gradient(180deg,#ffd24d,#b07b00)}
+    .led.green{background:linear-gradient(180deg,#4dff9a,#0aa04b)}
+    h1{font-size:18px;margin:0;color:var(--muted)}
+    .terminal{margin-top:18px;background:#0000001a;border-radius:8px;padding:18px 20px;min-height:180px;color:#c6f7d4;position:relative;overflow:hidden}
+    .notice{font-size:20px;line-height:1.25;margin:0 0 12px 0;color:var(--accent);font-weight:700}
+    .small{color:#9fd6b7;font-size:13px;margin-bottom:14px}
+    .message{background:linear-gradient(90deg, rgba(0,0,0,0.06), rgba(255,255,255,0.02));padding:14px;border-radius:6px;border:1px solid rgba(53,255,122,0.06);box-shadow:0 6px 24px rgba(0,0,0,0.45) inset}
+    code{font-family:var(--mono);display:block;white-space:pre-wrap}
+
+    /* Glitch animation for headline */
+    .glitch{position:relative;display:inline-block}
+    .glitch::before,.glitch::after{content:attr(data-text);position:absolute;left:0;top:0;opacity:0.8}
+    .glitch::before{transform:translate(2px,-2px);clip-path:polygon(0 0,100% 0,100% 45%,0 45%);animation:gl1 2.5s infinite linear}
+    .glitch::after{transform:translate(-2px,2px);clip-path:polygon(0 55%,100% 55%,100% 100%,0 100%);animation:gl2 3s infinite linear}
+    @keyframes gl1{0%{transform:translate(2px,-2px)}50%{transform:translate(-4px,0)}100%{transform:translate(2px,-2px)}}
+    @keyframes gl2{0%{transform:translate(-2px,2px)}50%{transform:translate(3px,1px)}100%{transform:translate(-2px,2px)}}
+
+    .mono-row{display:flex;align-items:center;gap:12px}
+    .tag{font-size:12px;padding:6px 8px;border-radius:6px;border:1px solid rgba(53,255,122,0.06);background:rgba(0,0,0,0.12)}
+    .actions{display:flex;gap:10px;margin-left:auto}
+    .btn{padding:8px 10px;border-radius:8px;border:1px solid rgba(255,255,255,0.04);background:transparent;color:var(--muted);cursor:pointer}
+
+    /* footer */
+    .footer{display:flex;justify-content:space-between;align-items:center;margin-top:18px;color:#78cfa0;font-size:13px}
+
+    /* responsive */
+    @media (max-width:560px){.card{padding:18px}.notice{font-size:18px}}
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <div class="card" role="region" aria-label="access notice">
+      <div class="top">
+        <div class="leds" aria-hidden="">
+          <div class="led red"></div>
+          <div class="led yellow"></div>
+          <div class="led green"></div>
+        </div>
+        <h1>
+          <span class="glitch" data-text="ACCESS DENIED">ACCESS DENIED</span>
+        </h1>
+        <div class="actions" style="margin-left:auto">
+          <button class="btn" onclick="copyText()" title="Copy message">Copy</button>
+        </div>
+      </div>
+
+      <div class="terminal">
+        <div class="notice">Skynet's Protocol has called upon Permission Denial</div>
+        <div class="small" id="accessdeniedtitle">Please Contact the Developers of Skynet</div>
+        <div class="message" id="msg">
+          <code id="accessdeniedmsg">We are Sorry, due to confidential security reasons our Security System suspects that your system is infected with virus / malware</code>
+        </div>
+
+        <div style="margin-top:14px;color:#a8eac3;font-size:13px">
+          Our Artificial Intelligence will trigger this action when it suspects any threat.
+        </div>
+      </div>
+
+      <div class="footer">
+        <div>Skynet • System Security</div>
+        <div id="clock">Initializing...</div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // small niceties
+    function pad(n){return n.toString().padStart(2,'0')}
+    function updateClock(){const d=new Date(),t=d.getHours()+":"+pad(d.getMinutes())+":"+pad(d.getSeconds());document.getElementById('clock').textContent=t}
+    setInterval(updateClock,1000);updateClock();
+    function copyText(){navigator.clipboard?.writeText(document.getElementById('msg').innerText).then(()=>{
+      alert('Message copied to clipboard')
+    }).catch(()=>alert('Copy failed'))}
+
+    var notice = new URLSearchParams(window.location.search).get("accessdeniednotice");
+
+    var themsg = new URLSearchParams(window.location.search).get("accessdeniedmsg");
+
+    if(notice.length>10 && themsg.length>10){
+        accessdeniedtitle.innerHTML = notice;
+        accessdeniedmsg.innerHTML = themsg; 
+    }
+  </script>
+
+
+</body></html>
